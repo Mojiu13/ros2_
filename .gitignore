@@ -1,0 +1,21 @@
+# ROS build files
+build/
+install/
+log/
+
+# Catkin/Colcon files
+*.catkin
+CATKIN_IGNORE
+COLCON_IGNORE
+.colcon/
+colcon.pkg
+
+# Python bytecode and caches
+*.pyc
+__pycache__/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*~
