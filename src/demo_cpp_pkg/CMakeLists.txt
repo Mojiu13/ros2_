@@ -9,6 +9,21 @@ endif()
 find_package(ament_cmake REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
+
+# 1.查找rclcpp头文件
+find_package(rclcpp REQUIRED)
+
+# 2.添加可执行文件 cpp_node
+add_executable(cpp_node src/cpp_node.cpp)
+
+# 3.为cpp_node添加依赖
+ament_target_dependencies(cpp_node rclcpp)
+
+# 4. 将 cpp_node 拷贝到 install 目录
+install(TARGETS
+cpp_node
+DESTINATION lib/${PROJECT_NAME}
+)
 # find_package(<dependency> REQUIRED)
 
 if(BUILD_TESTING)
