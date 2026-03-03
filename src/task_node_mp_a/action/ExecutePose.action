@@ -1,0 +1,17 @@
+# Goal
+string group_name
+geometry_msgs/PoseStamped target_pose
+float32 planning_time
+float32 vel_scale
+float32 acc_scale
+---
+# Result
+bool success
+int32 task_error
+int32 moveit_error
+string message
+---
+# Feedback
+string stage
+float32 progress
+string message

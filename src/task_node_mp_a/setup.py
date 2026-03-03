@@ -1,8 +1,8 @@
-from setuptools import find_packages, setup
-from glob import glob
 import os
+from glob import glob
+from setuptools import find_packages, setup
 
-package_name = 'my_py_pkg'
+package_name = 'task_node_mp_a'
 
 setup(
     name=package_name,
@@ -12,7 +12,8 @@ setup(
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
-        (os.path.join('share', package_name, 'launch'), glob('launch/*.launch.py')),
+        (os.path.join('share', package_name, 'action'),
+        glob('action/*.action')),
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -23,11 +24,6 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'my_pub = my_py_pkg.my_pub:main',
-            'my_sub = my_py_pkg.my_sub:main',
-            'add_server = my_py_pkg.add_two_ints_server:main',
-            'panda_moveitpy_demo = my_py_pkg.moveit.panda_moveitpy_demo:main',
-            'moveitpy_closed_loop = my_py_pkg.moveitpy_closed_loop:main'
         ],
     },
 )
