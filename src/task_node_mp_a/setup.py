@@ -24,6 +24,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+             'task_node = task_node_mp_a.task_node:main',
         ],
     },
 )
