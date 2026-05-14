@@ -8,11 +8,22 @@ from task_node_mp_a_interfaces.action import ExecutePose
 
 # TaskNode 层错误码
 # 这一层表示“任务编排层”的状态，不等同于 MoveIt 自己的错误码
-TASK_OK = 0
-TASK_NOT_READY = 1
-TASK_TIMEOUT = 2
-TASK_CANCELED = 3
-TASK_INTERNAL = 4
+
+# MP2.0新增的常量
+STAGE_TASK_INTERNAL = 0
+STAGE_PLAN = 1
+STAGE_EXECUTE = 2
+
+CODE_NONE = 0
+CODE_INVALID_REQUEST = 1
+CODE_NOT_READY = 2
+CODE_FAILED = 3
+CODE_TIMEOUT = 4
+CODE_CANCELED = 5
+
+RECOVERY_NONE = 0
+RECOVERY_REPLAN = 1
+RECOVERY_RETURN_HOME_FIRST = 2
 
 
 class TaskNode(Node):
@@ -78,10 +89,13 @@ class TaskNode(Node):
     def _make_result(
         self,
         success: bool,
-        task_error: int,
+        stage: int,
+        code: int,
         moveit_error: int,
         message: str,
-    ):
+        retryable: bool,
+        recovery_hint: int,
+):
         """
         统一构造 ExecutePose.Result。
 
@@ -91,9 +105,12 @@ class TaskNode(Node):
         """
         result = ExecutePose.Result()
         result.success = success
-        result.task_error = task_error
+        result.stage = stage
+        result.code = code
         result.moveit_error = moveit_error
         result.message = message
+        result.retryable = retryable
+        result.recovery_hint = recovery_hint
         return result
 
     async def _finish_canceled(self, goal_handle, msg: str):
@@ -102,9 +119,12 @@ class TaskNode(Node):
         """
         result = self._make_result(
             success=False,
-            task_error=TASK_CANCELED,
+            stage=STAGE_TASK_INTERNAL,
+            code=CODE_CANCELED,
             moveit_error=0,
             message=msg,
+            retryable=True,
+            recovery_hint=RECOVERY_NONE,
         )
         goal_handle.canceled()
         return result
@@ -128,9 +148,12 @@ class TaskNode(Node):
         if not self._moveit.is_ready():
             result = self._make_result(
                 success=False,
-                task_error=TASK_NOT_READY,
+                stage=STAGE_TASK_INTERNAL,
+                code=CODE_NOT_READY,
                 moveit_error=0,
                 message='MoveIt is not ready',
+                retryable=True,
+                recovery_hint=RECOVERY_REPLAN,
             )
             goal_handle.abort()
             return result
@@ -161,9 +184,12 @@ class TaskNode(Node):
         if not plan_ok:
             result = self._make_result(
                 success=False,
-                task_error=TASK_INTERNAL,
+                stage=STAGE_PLAN,
+                code=CODE_FAILED,
                 moveit_error=moveit_error,
                 message=plan_msg,
+                retryable=True,
+                recovery_hint=RECOVERY_REPLAN,
             )
             goal_handle.abort()
             return result
@@ -187,9 +213,13 @@ class TaskNode(Node):
         if not exec_ok:
             result = self._make_result(
                 success=False,
-                task_error=TASK_INTERNAL,
+                stage=STAGE_EXECUTE,
+                code=CODE_FAILED,
                 moveit_error=moveit_error,
                 message=exec_msg,
+                retryable=False,
+                recovery_hint=RECOVERY_RETURN_HOME_FIRST,
+
             )
             goal_handle.abort()
             return result
@@ -197,9 +227,12 @@ class TaskNode(Node):
         # ---------- 3) DONE ----------
         result = self._make_result(
             success=True,
-            task_error=TASK_OK,
+            stage=STAGE_EXECUTE,
+            code=CODE_NONE,
             moveit_error=0,
             message='OK',
+            retryable=False,
+            recovery_hint=RECOVERY_NONE,
         )
         goal_handle.succeed()
         return result

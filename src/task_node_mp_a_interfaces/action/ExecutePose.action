@@ -7,9 +7,15 @@ float32 acc_scale
 ---
 # Result
 bool success
-int32 task_error
+
+int32 stage
+int32 code
+
 int32 moveit_error
 string message
+
+bool retryable
+int32 recovery_hint
 ---
 # Feedback
 string stage
