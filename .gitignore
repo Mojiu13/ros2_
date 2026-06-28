@@ -1,22 +1,35 @@
-# ROS build files
+# ROS2 / colcon build outputs
 build/
 install/
 log/
 
-# Catkin/Colcon files
+# Catkin / colcon markers
 *.catkin
 CATKIN_IGNORE
 COLCON_IGNORE
 .colcon/
 colcon.pkg
 
-# Python bytecode and caches
-*.pyc
+# Python
 __pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
 
-# IDE files
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+
+# Runtime logs
+*.log
+r0_m0_baseline_logs/
+
+# Editor
 .vscode/
 .idea/
 *.swp
 *~
-s
+
+# OS
+.DS_Store
