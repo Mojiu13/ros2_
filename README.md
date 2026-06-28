@@ -30,6 +30,15 @@ R2-M6  MoveIt Execution 与 controller 对接
 R2-M7  ROS2 Action 与 C++ 工程基础
 R2-M8  joint_trajectory_controller 源码主线
 R2-M9  自定义 controller 与 mock hardware，可选进阶
+
+MP-A   MoveItPy TaskNode 任务节点项目
+MP-B   arm + gripper 顺序执行项目
+MP-C   故障注入与自动恢复项目
+MP-D   自定义 controller 项目，可选
+
+JOB-M1 README / 架构图 / 调试文档
+JOB-M2 简历项目描述
+JOB-M3 面试问答库
 ```
 
 ## 当前阶段
@@ -58,6 +67,8 @@ ros2_/
 │   ├── SYSTEM_MAP.md
 │   └── INTERVIEW_QA.md
 ├── prompts/
+│   ├── PROMPT_INDEX.md
+│   ├── ALL_MODULE_PROMPTS.md
 │   └── R0-M0.md
 ├── scripts/
 │   └── collect_r0_m0_baseline.sh
@@ -87,10 +98,36 @@ ros2 param list /move_group
 5. README 总结
 6. 面试问答
 
-## 后续对话使用方式
+## 后续对话通用调用方式
 
 在新的 ChatGPT 对话框里，可以直接说：
 
 ```text
-我正在学习 Mojiu13/ros2_ 仓库中的 R0-M0 模块。请读取仓库 README、LEARNING_STATUS、docs/COMMAND_CHEATSHEET.md、docs/ERROR_LOG.md 和 prompts/R0-M0.md，然后带我完成本模块。
+请连接并读取我的 GitHub 仓库：Mojiu13/ros2_
+
+请优先读取以下文件：
+1. README.md
+2. LEARNING_STATUS.md
+3. docs/COMMAND_CHEATSHEET.md
+4. docs/ERROR_LOG.md
+5. docs/SYSTEM_MAP.md
+6. prompts/PROMPT_INDEX.md
+7. prompts/ALL_MODULE_PROMPTS.md
+
+我要学习的模块是：<MODULE_ID>
+
+请在 prompts/ALL_MODULE_PROMPTS.md 中找到该模块对应的提示词，并严格按该模块提示词带我学习。
+
+要求：
+- 把我当作真正的新手；
+- 不要百科式堆知识点；
+- 先跑最小例子，再观察，再修改，再故障注入，再总结；
+- 每次只给我少量命令，等我贴输出后再判断；
+- 如果报错，先判断错误属于哪一层；
+- 每完成一个阶段，告诉我应该更新仓库里的哪个文件；
+- 本模块结束时，帮我生成可提交到 GitHub 的总结文档。
+
+现在请从该模块的第一步开始带我做。
 ```
+
+把 `<MODULE_ID>` 换成：`R0-M0`、`R1-M1`、`R2-M6`、`MP-A`、`JOB-M3` 等即可。
