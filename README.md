@@ -5,7 +5,7 @@
 当前主线不是百科式学习，而是工程训练：
 
 ```text
-运行 → 观察 → 修改 → 破坏 → 修复 → 总结 → 复述
+运行 → 观察 → 修改 → 破坏 → 修复 → 总结 → 复述 → 模块面试
 ```
 
 ## 当前学习路线
@@ -69,6 +69,7 @@ ros2_/
 ├── prompts/
 │   ├── PROMPT_INDEX.md
 │   ├── ALL_MODULE_PROMPTS.md
+│   ├── MODULE_INTERVIEW_RULES.md
 │   └── R0-M0.md
 ├── scripts/
 │   └── collect_r0_m0_baseline.sh
@@ -96,7 +97,40 @@ ros2 param list /move_group
 3. 系统链路图
 4. 故障记录
 5. README 总结
-6. 面试问答
+6. 模块面试问题
+7. 你先回答后的反馈
+8. 可写入 `docs/INTERVIEW_QA.md` 的标准问答
+
+## 模块面试规则
+
+每个模块结束前必须执行模块面试。
+
+基本流程：
+
+```text
+1. 根据当前模块内容，先问我 5～8 个面试问题；
+2. 不要先给标准答案；
+3. 让我先逐题回答；
+4. 根据我的回答指出概念漏洞、表达问题、工程理解不足；
+5. 让我复述关键答案；
+6. 最后整理成可写入 docs/INTERVIEW_QA.md 的标准问答。
+```
+
+问题应尽量覆盖：
+
+```text
+概念边界
+系统角色
+CLI 观察命令
+故障排查
+项目表达
+```
+
+详细规则见：
+
+```text
+prompts/MODULE_INTERVIEW_RULES.md
+```
 
 ## 后续对话通用调用方式
 
@@ -111,12 +145,15 @@ ros2 param list /move_group
 3. docs/COMMAND_CHEATSHEET.md
 4. docs/ERROR_LOG.md
 5. docs/SYSTEM_MAP.md
-6. prompts/PROMPT_INDEX.md
-7. prompts/ALL_MODULE_PROMPTS.md
+6. docs/INTERVIEW_QA.md
+7. prompts/PROMPT_INDEX.md
+8. prompts/ALL_MODULE_PROMPTS.md
+9. prompts/MODULE_INTERVIEW_RULES.md
 
 我要学习的模块是：<MODULE_ID>
 
 请在 prompts/ALL_MODULE_PROMPTS.md 中找到该模块对应的提示词，并严格按该模块提示词带我学习。
+同时，请严格遵守 prompts/MODULE_INTERVIEW_RULES.md：每个模块结束前必须加入“模块面试提问环节”。
 
 要求：
 - 把我当作真正的新手；
@@ -125,7 +162,10 @@ ros2 param list /move_group
 - 每次只给我少量命令，等我贴输出后再判断；
 - 如果报错，先判断错误属于哪一层；
 - 每完成一个阶段，告诉我应该更新仓库里的哪个文件；
-- 本模块结束时，帮我生成可提交到 GitHub 的总结文档。
+- 本模块结束时，帮我生成可提交到 GitHub 的总结文档；
+- 本模块结束前，必须先问我 5～8 个面试问题，不要先给标准答案；
+- 根据我的回答指出概念漏洞、表达问题和工程理解不足；
+- 最后整理成可写入 docs/INTERVIEW_QA.md 的标准问答。
 
 现在请从该模块的第一步开始带我做。
 ```
