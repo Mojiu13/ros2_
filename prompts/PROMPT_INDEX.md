@@ -19,12 +19,15 @@
 3. docs/COMMAND_CHEATSHEET.md
 4. docs/ERROR_LOG.md
 5. docs/SYSTEM_MAP.md
-6. prompts/PROMPT_INDEX.md
-7. prompts/ALL_MODULE_PROMPTS.md
+6. docs/INTERVIEW_QA.md
+7. prompts/PROMPT_INDEX.md
+8. prompts/ALL_MODULE_PROMPTS.md
+9. prompts/MODULE_INTERVIEW_RULES.md
 
 我要学习的模块是：<MODULE_ID>
 
 请在 prompts/ALL_MODULE_PROMPTS.md 中找到该模块对应的提示词，并严格按该模块提示词带我学习。
+同时，请严格遵守 prompts/MODULE_INTERVIEW_RULES.md：每个模块结束前必须加入“模块面试提问环节”。
 
 要求：
 - 把我当作真正的新手；
@@ -33,7 +36,10 @@
 - 每次只给我少量命令，等我贴输出后再判断；
 - 如果报错，先判断错误属于哪一层：环境层、workspace 层、launch 层、ROS2 通信层、URDF/TF 层、MoveIt 层、ros2_control 层、controller 层、RViz 层、GitHub 文档层；
 - 每完成一个阶段，告诉我应该更新仓库里的哪个文件；
-- 本模块结束时，帮我生成可提交到 GitHub 的总结文档。
+- 本模块结束时，帮我生成可提交到 GitHub 的总结文档；
+- 本模块结束前，必须先问我 5～8 个面试问题，不要先给标准答案；
+- 根据我的回答指出概念漏洞、表达问题和工程理解不足；
+- 最后整理成可写入 docs/INTERVIEW_QA.md 的标准问答。
 
 现在请从该模块的第一步开始带我做。
 ```
@@ -100,11 +106,11 @@
 ```text
 请连接并读取我的 GitHub 仓库：Mojiu13/ros2_
 
-请读取 README.md、LEARNING_STATUS.md、docs/COMMAND_CHEATSHEET.md、docs/ERROR_LOG.md、docs/SYSTEM_MAP.md、prompts/PROMPT_INDEX.md、prompts/ALL_MODULE_PROMPTS.md。
+请读取 README.md、LEARNING_STATUS.md、docs/COMMAND_CHEATSHEET.md、docs/ERROR_LOG.md、docs/SYSTEM_MAP.md、docs/INTERVIEW_QA.md、prompts/PROMPT_INDEX.md、prompts/ALL_MODULE_PROMPTS.md、prompts/MODULE_INTERVIEW_RULES.md。
 
 我要学习的模块是：R1-M1。
 
-请找到该模块提示词，并从第一步开始带我做。
+请找到该模块提示词，并从第一步开始带我做。本模块结束前必须按 MODULE_INTERVIEW_RULES.md 进行模块面试。
 ```
 
 ### 示例 2：学习 MP-A
@@ -114,7 +120,7 @@
 
 我要学习的模块是：MP-A。
 
-请根据 prompts/ALL_MODULE_PROMPTS.md 中的 MP-A 提示词，带我完成 MoveItPy TaskNode 任务节点项目。
+请根据 prompts/ALL_MODULE_PROMPTS.md 中的 MP-A 提示词，带我完成 MoveItPy TaskNode 任务节点项目。本项目结束前必须进行项目答辩式模块面试。
 ```
 
 ---
@@ -124,7 +130,7 @@
 每个模块都遵守同一套训练节奏：
 
 ```text
-运行 → 观察 → 修改 → 破坏 → 修复 → 总结 → 复述
+运行 → 观察 → 修改 → 破坏 → 修复 → 总结 → 复述 → 模块面试
 ```
 
 每个模块结束必须留下：
@@ -135,5 +141,29 @@
 3. 系统链路理解
 4. 错误记录
 5. README 或模块文档
-6. 3～5 个面试问答
+6. 5～8 个模块面试问题
+7. 你先回答后的反馈
+8. 可写入 docs/INTERVIEW_QA.md 的标准问答
+```
+
+## 5. 模块面试规则
+
+每个模块结束前必须执行：
+
+```text
+1. 根据当前模块内容问我 5～8 个面试问题；
+2. 不要先给标准答案，让我先回答；
+3. 根据我的回答指出概念漏洞、表达问题、工程理解不足；
+4. 让我复述关键答案；
+5. 最后整理成可写入 docs/INTERVIEW_QA.md 的标准问答。
+```
+
+问题必须尽量覆盖：
+
+```text
+概念边界
+系统角色
+CLI 观察命令
+故障排查
+项目表达
 ```
