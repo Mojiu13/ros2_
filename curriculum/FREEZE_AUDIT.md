@@ -2,7 +2,7 @@
 
 审计范围：27 个模块、prerequisite、Fast/Standard 路线、Docker-first/Just-In-Time、A1→A2、Action 学习台阶、Application Gate。
 
-- Dependency：Pass。所有 prerequisite 指向存在模块；Fast 顺序无逆序；Standard 无循环；旧 APP-01/APP-02 引用为零。
+- Dependency：Pass。所有 prerequisite 指向存在模块；Fast 顺序无逆序；Standard 无循环；未拆分的旧 APP 标识引用为零。
 - Docker-first：Pass。所有 P0/P1 模块统一环境/开始检查/完成/恢复规则；默认单主开发容器；命令歧义时标注 Host/Container。
 - Just-In-Time：Pass。ENV-01 只装最小 ROS 开发；ROS/SYS/SIM/CTRL/MOVEIT 按需演化环境。
 - A1→A2：Pass。A1 原理 → CTRL-02 Stage B A2 controller baseline → MOVEIT-01 → MOVEIT-02 → INT-01。

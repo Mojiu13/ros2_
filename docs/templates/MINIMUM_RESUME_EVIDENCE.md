@@ -1,6 +1,6 @@
 # MINIMUM_RESUME_EVIDENCE
 
-> Application Gate 时基于真实仓库填写；未验证内容不得写入。
+> Application Gate 时基于真实仓库填写；每个项目必须提供 2–3 条真实项目 bullet，未验证内容不得写入。
 
 ## Project A
 
