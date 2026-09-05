@@ -7,9 +7,9 @@
 ## 环境原则
 
 - Host 负责 Docker Engine/Compose、Git、编辑器、桌面/GPU driver、硬件访问基础和源码持久化。
-- Container 负责 ROS2 Jazzy、colcon/rosdep/ament、MoveIt2、ros2_control、Gazebo ROS 集成、编译与运行依赖。
+- Container 从 ROS2 Jazzy 最小开发环境开始；Gazebo、ros2_control、MoveIt 等按模块 Just-In-Time 写入环境定义并逐步重建。
 - 项目源码通过 bind mount 持久化；删除 container 后必须能从 Dockerfile/Compose 重建。
-- GUI/GPU 先识别 X11/Wayland 与 GPU 类型，再按当前官方方案配置；禁止盲抄宽权限 xhost 做法。
+- ENV-01 只记录基本 GPU 信息；RViz GUI 在 SYS-01 按需配置，Gazebo GPU/renderer 在 SIM-01 正式验证。
 - 纯仿真默认 Docker；只有记录了实际限制与差异时才允许 Native Fallback。
 
 环境图见 [`curriculum/DOCKER_FIRST_ARCHITECTURE.md`](curriculum/DOCKER_FIRST_ARCHITECTURE.md)。
@@ -34,7 +34,7 @@
 - 岗位映射：[`curriculum/ROLE_COMPETENCY_MATRIX.md`](curriculum/ROLE_COMPETENCY_MATRIX.md)
 - 项目边界：[`projects/PROJECTS.md`](projects/PROJECTS.md)
 
-达到 Application Gate 后开始投递，同时继续 TEST-01、DOC-01、JOB-01 与 P1；不需要等全部课程学完。
+达到 Application Gate 并生成最低简历证据后开始投递，随后继续 TEST-01 → DOC-01 → JOB-01 → P1；不需要等全部课程学完。
 
 ## 开始模块
 

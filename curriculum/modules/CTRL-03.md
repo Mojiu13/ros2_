@@ -12,13 +12,15 @@ INT-01
 
 ## 环境要求
 
-机械臂 controller 可稳定运行
+默认使用 ENV-01 验收通过的 Dockerized ROS2 Jazzy 环境；不假定 Host 安装 ROS。
 
-## 开始时检查
+如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。
 
-保留 CTRL-02 的合法轨迹作为回归。
+机械臂 controller 可稳定运行## 开始时检查
 
-## 核心实践任务
+先确认 Docker Engine、目标 image/container、宿主 source bind mount、ROS underlay、workspace overlay，以及 prerequisite 报告/项目证据。
+
+保留 CTRL-02 的合法轨迹作为回归。## 核心实践任务
 
 调整 update/publish rate、constraints、goal_time；加入 gripper controller 或第二执行器；验证切换与资源占用；顺序动作。
 
@@ -40,6 +42,8 @@ INT-01
 
 除非上述证据、复述和模块面试都完成，否则不得标记 Completed。
 
+如果为了本模块在 running container 中临时安装或修改依赖，但没有回写 Dockerfile/Compose/entrypoint 等版本化环境定义并重建验证，则模块不得 Completed。
+
 ## 模块面试范围
 
 path 与 goal tolerance；多个 controller 何时冲突。
@@ -48,4 +52,4 @@ path 与 goal tolerance；多个 controller 何时冲突。
 
 ## 新对话上下文恢复
 
-新对话先读取：`README.md`、`LEARNING_STATUS.md`、`curriculum/CURRICULUM_INDEX.md`、本文件、所有 Prerequisites 的模块报告，以及本模块涉及项目的 README/设计/错误记录。不得假设记得上一聊天。
+读取 `README.md`、`LEARNING_STATUS.md`、`curriculum/CURRICULUM_INDEX.md`、当前 module、prerequisite reports、`curriculum/DOCKER_FIRST_ARCHITECTURE.md`、`docs/ENVIRONMENT_MANIFEST.md`，以及当前项目真实 README/evidence。不得依赖上一聊天记忆。

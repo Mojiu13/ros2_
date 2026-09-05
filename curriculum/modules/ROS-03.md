@@ -12,13 +12,15 @@ ROS-02
 
 ## 环境要求
 
-两个基础包可运行
+默认使用 ENV-01 验收通过的 Dockerized ROS2 Jazzy 环境；不假定 Host 安装 ROS。
 
-## 开始时检查
+如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。
 
-读取双语言包结构和当前接口名。
+两个基础包可运行## 开始时检查
 
-## 核心实践任务
+先确认 Docker Engine、目标 image/container、宿主 source bind mount、ROS underlay、workspace overlay，以及 prerequisite 报告/项目证据。
+
+读取双语言包结构和当前接口名。## 核心实践任务
 
 统一 launch 多节点；从 YAML 加载参数；实验 namespace/remap；检查最终节点名、接口名和参数值。
 
@@ -40,6 +42,8 @@ launch/config 示例；名称解析表；配置层排障卡。
 
 除非上述证据、复述和模块面试都完成，否则不得标记 Completed。
 
+如果为了本模块在 running container 中临时安装或修改依赖，但没有回写 Dockerfile/Compose/entrypoint 等版本化环境定义并重建验证，则模块不得 Completed。
+
 ## 模块面试范围
 
 参数加载链；namespace 与 remap 的区别；launch 成功但节点行为不对怎么查。
@@ -48,4 +52,4 @@ launch/config 示例；名称解析表；配置层排障卡。
 
 ## 新对话上下文恢复
 
-新对话先读取：`README.md`、`LEARNING_STATUS.md`、`curriculum/CURRICULUM_INDEX.md`、本文件、所有 Prerequisites 的模块报告，以及本模块涉及项目的 README/设计/错误记录。不得假设记得上一聊天。
+读取 `README.md`、`LEARNING_STATUS.md`、`curriculum/CURRICULUM_INDEX.md`、当前 module、prerequisite reports、`curriculum/DOCKER_FIRST_ARCHITECTURE.md`、`docs/ENVIRONMENT_MANIFEST.md`，以及当前项目真实 README/evidence。不得依赖上一聊天记忆。

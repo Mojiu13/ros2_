@@ -1,39 +1,49 @@
 # Docker-first ROS2 开发环境
 
+## 默认拓扑：一个主开发容器
+
 ~~~text
 Ubuntu 24.04 Host
 ├─ Git repository / source ── bind mount ───────────────┐
-├─ Docker Engine + Compose ── build/run/orchestration ─┤
-├─ Desktop session (X11 / XWayland / Wayland) ─────────┤
-├─ GPU driver + device/runtime (Intel/AMD/NVIDIA) ─────┤
-├─ USB / serial / network devices（需要时显式授权）────┤
-└─ Git + editor                                           │
-                                                         ▼
-ROS2 Jazzy Container
-├─ /opt/ros/jazzy             ← ROS underlay
-├─ /workspace/src             ← Host source bind mount（必须持久化）
-├─ /workspace/build|install|log ← overlay 产物；可 bind/named volume/cache
-├─ MoveIt2 + ros2_control + Gazebo ROS integration
-├─ C++ / Python build and runtime dependencies
-└─ RViz2 / Gazebo Sim ── display + GPU path ── Host desktop
-
-Dockerfile ──build──> immutable image
-compose.yaml ──configure──> container / mounts / network / GUI / devices
-entrypoint.sh ──initialize──> ROS underlay + workspace overlay
+├─ Docker Engine + Compose                              │
+├─ Desktop + GPU driver（模块需要时）───────────────────┤
+└─ Git + editor                                         │
+                                                        ▼
+ros2-dev development container（主容器）
+├─ non-root development user（匹配 Host UID/GID）
+├─ /opt/ros/jazzy              ← ROS underlay
+├─ /workspace/src              ← Host source bind mount
+├─ /workspace/install          ← workspace overlay
+├─ build / log                 ← 可重建或可选 volume
+└─ 随课程逐步加入 RViz/Gazebo/ros2_control/MoveIt/application
 ~~~
 
-## 边界
+ROS-01 为网络发现实验可以临时启动第二个 container；课程不把 MoveIt、Gazebo、controller、TaskNode、RViz 强制拆成微服务容器，也不引入 Kubernetes。
 
-- Image 是可重建环境模板；container 是其运行实例。
-- Bind mount 用于宿主源码；named volume 可用于缓存或构建产物，但不得成为唯一源码副本。
-- `/opt/ros/jazzy` 是 underlay；工作区 `install` 是 overlay。
-- 依赖变更最终写回 Dockerfile/环境定义；临时容器安装只能用于诊断。
-- bridge 与 host networking 都必须基于发现实验选择；ROS_DOMAIN_ID 需要显式记录。
+## Image 逐步演化
 
-## GUI/GPU 决策
+~~~text
+Stage 1  ENV-01   ROS2 Jazzy base development
+   ↓
+Stage 2  ROS-01/02/03   ROS package + interface development
+   ↓
+Stage 3  SYS-01/SIM-01  RViz runtime + Gazebo Sim + ros_gz + graphics
+   ↓
+Stage 4  CTRL-01        ros2_control + ros2_controllers + Gazebo integration
+   ↓
+Stage 5  MOVEIT-01      MoveIt2 development dependencies
+~~~
 
-先检测宿主会话是 X11、XWayland 还是 Wayland，再采用当前官方、安全、最小授权方案。先识别 Intel/AMD/NVIDIA 和宿主 driver，再验证容器 OpenGL renderer，防止误把软件渲染当硬件加速。NVIDIA Container Toolkit 只在实际为 NVIDIA 且官方步骤要求时使用。
+这表示项目 image/environment definition 随课程演化，不要求创建五个永久 image，也不在 Day 1 安装全部机器人软件。每次依赖变化必须进入 Dockerfile/Compose/entrypoint 等版本化定义，重建并写入环境清单。
 
-## Native Fallback
+## 边界与复现
 
-纯仿真默认 Docker。只有 GUI/GPU、USB/serial/camera/CAN/EtherCAT、vendor SDK、实时内核等出现已验证限制时才允许 native；必须记录证据、理由、环境差异和回归方式，不能因为不会配置 Docker 而跳过。
+- Image 是模板，container 是运行实例；bind mount 保存宿主源码，named volume 可存缓存但不能成为唯一源码副本。
+- Container 默认使用与 Host UID/GID 合理映射的 non-root development user，防止 workspace 出现大量 root-owned 文件。
+- 临时 `docker exec`/`apt install` 仅可诊断，最终必须回写并重建。
+- 命令位置容易混淆时显式标注 `[HOST]` 或 `[CONTAINER]`。
+- 纯仿真 Docker-first；Native Fallback 需实际限制、理由、差异和回归记录。
+
+## GUI/GPU 的 Just-In-Time 时机
+
+ENV-01 只记录 GPU vendor，简单 GUI smoke test 可选且不构成 blocker。SYS-01 首次需要 RViz 时配置必要显示通道。SIM-01 才正式验证 Gazebo GUI、OpenGL renderer、hardware acceleration、GPU vendor 对应方案与 software rendering detection。

@@ -1,8 +1,8 @@
 # LEARNING_STATUS
 
-课程版本：2026-09 Docker-first 最终局部修订版
+课程版本：2026-09 Freeze Candidate 2
 
-当前状态：Not Started。课程架构冻结候选；尚未开始 ENV-01。
+当前状态：Not Started。冻结审计待本次提交验证；尚未开始 ENV-01。
 
 | Module | Priority | Status | Evidence link | Interview | Notes |
 |---|---:|---|---|---|---|
@@ -45,4 +45,4 @@
 - Blocked：记录单一阻塞条件和已验证证据。
 - Completed：运行/观察/故障/修复/回归、deliverables、复述和模块面试全部完成。
 
-每次只设一个主学习模块为 In Progress；Docker 临时修改未回写环境定义时，相关模块不得 Completed。
+每次只设一个主学习模块为 In Progress；Docker 临时修改未回写环境定义、未更新 ENVIRONMENT_MANIFEST 或 bind mount 出现未解决 ownership 污染时，相关模块不得 Completed。

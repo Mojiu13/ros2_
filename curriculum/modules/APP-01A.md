@@ -12,13 +12,13 @@ INT-01
 
 ## 环境要求
 
-默认使用 ENV-01 验收通过的 Dockerized ROS2 Jazzy 环境；不假定宿主安装 ROS。
+默认使用 ENV-01 验收通过的 Dockerized ROS2 Jazzy 环境；不假定 Host 安装 ROS。
 
-## 开始时检查
+如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。## 开始时检查
 
-Project A2/INT-01 稳定；选择一个具体但不过大的任务场景；检查已有项目证据。
+先确认 Docker Engine、目标 image/container、宿主 source bind mount、ROS underlay、workspace overlay，以及 prerequisite 报告/项目证据。
 
-## 核心实践任务
+Project A2/INT-01 稳定；选择一个具体但不过大的任务场景；检查已有项目证据。## 核心实践任务
 
 编写 REQUIREMENTS.md：FR-01...、NFR-01... 与 acceptance criteria；至少覆盖 named target、joint target、feedback、明确 result、非法目标拒绝、planning/execution 分离、有限等待、可诊断日志、配置分离。设计 INTERFACE_DESIGN 和 Task.action 的 goal/feedback/result/error 字段；实现 C++ Action Server skeleton 与 Python client，只验证接口生命周期和输入校验，不接入 MoveIt。
 
@@ -38,7 +38,9 @@ REQUIREMENTS.md、INTERFACE_DESIGN.md、Task.action、C++ Action Server Skeleton
 
 需求编号稳定且可测试；接口字段可追踪到需求；非法输入不进入执行；server/client 在 Docker 中可构建运行。
 
-除非证据、复述和模块面试全部完成，否则不得标记 Completed。临时 container 修改未回写环境定义时也不得完成。
+除非证据、复述和模块面试全部完成，否则不得标记 Completed。
+
+如果为了本模块在 running container 中临时安装或修改依赖，但没有回写 Dockerfile/Compose/entrypoint 等版本化环境定义并重建验证，则模块不得 Completed。
 
 ## 模块面试范围
 
@@ -46,4 +48,4 @@ REQUIREMENTS.md、INTERFACE_DESIGN.md、Task.action、C++ Action Server Skeleton
 
 ## 新对话上下文恢复
 
-读取 README、LEARNING_STATUS、CURRICULUM_INDEX、本文件、prerequisite 报告、Docker 架构/环境记录以及相关项目文档；不得依赖其他聊天记忆。
+读取 `README.md`、`LEARNING_STATUS.md`、`curriculum/CURRICULUM_INDEX.md`、当前 module、prerequisite reports、`curriculum/DOCKER_FIRST_ARCHITECTURE.md`、`docs/ENVIRONMENT_MANIFEST.md`，以及当前项目真实 README/evidence。不得依赖上一聊天记忆。

@@ -2,8 +2,8 @@
 
 | 岗位要求 | 对应能力 | 课程模块 | 优先级 | 最终证据 |
 |---|---|---|---:|---|
-| 可复现 ROS 开发环境 | Dockerfile/Compose、持久化 workspace、GUI/GPU、容器网络、重建 | ENV-01, ROS-01, SIM-01 | P0 | docker/ 定义、重建记录、图形与 discovery 证据 |
-| ROS 机械手需求/方案/开发 | 需求、接口、节点架构、Task action、状态机、C++/Python | ROS-01~03, APP-01A/B | P0 | REQUIREMENTS、INTERFACE_DESIGN、TaskNode、Python client |
+| 可复现 ROS 开发环境 | 最小 Dockerfile/Compose、non-root UID/GID、持久化 workspace、环境逐步演化、重建 | ENV-01, ROS-01, SIM-01 | P0 | docker/ 定义、ENVIRONMENT_MANIFEST、ownership 与重建记录 |
+| ROS 机械手需求/方案/开发 | 需求、接口、节点架构、Task action、状态机、C++/Python | ROS-01~03（含最小 Action）, APP-01A/B | P0 | REQUIREMENTS、INTERFACE_DESIGN、TaskNode、Python client |
 | 多自由度机械手集成 | 成熟 6/7 DOF 模型上的 MoveIt/controller/Gazebo 集成 | SYS-01, MOVEIT-01/02, INT-01 | P0 | Project A2 全链路与集成报告 |
 | 自建模型与仿真理解 | 2–3 DOF MiniArm、URDF/Xacro/TF、碰撞/惯性、Gazebo | MODEL-01, SIM-01, CTRL-01 | P0 | Project A1 参数实验和模型证据 |
 | 最低机器人学理解 | DOF、joint/task space、pose/frame/transform、FK/IK/工作空间/奇异直觉 | MODEL-01, MOVEIT-01/02 | P0 | 模型实验、pose goal 与失败解释 |

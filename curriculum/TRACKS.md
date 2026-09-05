@@ -10,11 +10,11 @@ Fast Track 仍必须最终完成 TEST-01、DOC-01、JOB-01；但达到 Applicati
 
 ## Application Gate
 
-Gate 不是课程结束。它要求 Docker 可复现环境、6/7 DOF 全链路、C++/Python 编程闭环、TaskNode v1、取消/超时/错误传播、核心跨层故障案例和最小项目 README。详见 `APPLICATION_GATE.md`。
+Gate 不是课程结束。它要求最小 Docker 环境可复现、A1 原理证据、A2 独立 controller baseline 与 6/7 DOF 全链路、最小 Action 经验、TaskNode v1、取消/超时/错误传播、核心故障案例、项目 README 和 `MINIMUM_RESUME_EVIDENCE.md`。详见 `APPLICATION_GATE.md`。
 
 ## Standard Track：基本独立工作
 
-完成 Fast 主干并开始投递后，加入 MODEL-02、ROS-04、CTRL-03、MOVEIT-03、APP-02B；随后用新增证据更新 TEST/DOC/JOB 材料。
+达到 Gate 后立即投递，继续 TEST-01 → DOC-01 → JOB-01；再加入 MODEL-02、ROS-04、CTRL-03、MOVEIT-03、APP-02B，并用 P1 证据持续更新材料。
 
 目标从“达到面试与投递门槛”升级为“进入团队后能基本独立修改模型/配置、开发应用、处理常见故障、测试并交付文档”。
 

@@ -1,10 +1,10 @@
-# ENV-01｜Docker 化 ROS2 Jazzy 工程环境与可复现工作区
+# ENV-01｜Docker 化 ROS2 Jazzy 最小开发环境与可重建工作区
 
-> Phase 0 · P0 · 工作量 L
+> Phase 0 · P0 · 工作量 M
 
 ## 为什么学习
 
-建立项目自己定义、可重建的 ROS 开发环境，而不是让宿主机或某个手工改过的 container “碰巧能跑”。Docker 只学 ROS 工程当前需要的部分。
+只建立可重建的 ROS2 Jazzy 基础开发环境，不提前安装或调通 Gazebo、MoveIt、ros2_control、完整 RViz/GPU 或复杂 DDS 网络。后续依赖按模块 Just-In-Time 加入。
 
 ## Prerequisites
 
@@ -12,38 +12,40 @@
 
 ## 环境要求
 
-从普通 Ubuntu 24.04 Host 开始。教学时先按 Docker、ROS2 Jazzy、Gazebo、MoveIt 和 GPU vendor 当前官方文档确认镜像、软件源、GUI 与 runtime 方案。
+从普通 Ubuntu 24.04 Host 开始。Host 只需 Docker Engine/Compose、Git、编辑器、Docker 用户权限、CPU 架构和基本 GPU 厂商信息。Container 只安装 ROS2 Jazzy 基础开发环境、colcon、rosdep、ament 及 C++/Python ROS 编译基础。
 
 ## 开始时检查
 
-检查 Ubuntu 版本、CPU 架构、桌面会话（X11/XWayland/Wayland）、GPU 型号与 Host driver；检查 Docker Engine/Compose 与用户权限。不得先假定 NVIDIA，也不得假定 Host 已安装 ROS。
+[HOST] 确认 Ubuntu 版本、CPU 架构、GPU vendor、Docker/Compose 版本、Git/编辑器和 Docker 用户权限；不要求 Host 安装 ROS。确认仓库状态和将被 bind mount 的源码路径。
 
 ## 核心实践任务
 
-Host 明确只承担 Docker/Compose、Git、编辑器、桌面/GPU driver、硬件访问基础和源码持久化。亲手创建 docker/Dockerfile、compose.yaml、entrypoint.sh、README；在 image 中安装 Jazzy、colcon、rosdep、ament、MoveIt2、ros2_control、Gazebo ROS 集成及编译依赖。建立 /workspace/src/build/install/log；宿主源码 bind mount，区分 named volume。验证 underlay/overlay。识别显示协议后让 RViz2 GUI 工作；识别 Intel/AMD/NVIDIA 后检查 container 图形设备与 OpenGL renderer，确认不是意外软件渲染。完成 bridge/host networking 基线与 ROS_DOMAIN_ID 记录。
+亲手创建最小 `docker/Dockerfile`、`compose.yaml`、`entrypoint.sh`；建立 non-root development user，并用 Host UID/GID 映射避免 bind-mounted 文件变成 root-owned。建立 `/workspace/src/build/install/log`，区分 image/container/bind mount/named volume/entrypoint；理解 `/opt/ros/jazzy` underlay 与 workspace overlay；编译运行最小 ROS2 示例。记录环境清单。删除 container 后从版本化定义重建、重新编译并再次运行。
 
 ## 最小理论
 
-image、container、Dockerfile、Compose、bind mount、named volume；Host/container 边界；ROS workspace、source、underlay/overlay；GUI/GPU 和容器网络只讲当前实验所需。
+image、container、Dockerfile、Compose、bind mount、named volume、entrypoint；UID/GID 与文件 ownership 的开发所需直觉；workspace、source、underlay、overlay。不深入 namespace 或 Docker 系统原理。
 
 ## 故障注入
 
-Docker 权限失败、mount 路径错误、源码只存在 container、entrypoint 未 source、GUI 无显示、GPU 不可见或软件渲染、端口/网络命名空间误解。每次只注入一个。
+Docker 权限失败、Host/Container UID/GID 不匹配、root-owned 文件、mount 路径错误、源码只存在 container、entrypoint/source 错、overlay 未生效。一次只注入一个。
 
 ## 输出文件 / Deliverables
 
-docker/Dockerfile、docker/compose.yaml、docker/entrypoint.sh、docker/README；环境基线；GUI/GPU/renderer 记录；mount/network 图；重建验收报告。
+`docker/Dockerfile`、`docker/compose.yaml`、`docker/entrypoint.sh`、`docker/README.md`、最小 workspace/package、`docs/ENVIRONMENT_MANIFEST.md`、删除重建验收记录。
 
 ## Exit Criteria
 
-能够删除 ROS 开发 container，从 Dockerfile/Compose 重建；宿主源码仍存在；重新 build 后 ROS 环境和示例节点再次成功。能解释 image/container/bind/named volume/workspace/source/underlay/overlay。GUI 可用，GPU 路径有证据，所有依赖可由版本化环境定义恢复。
+Container 使用合理的 non-root development user；Host 可正常编辑/删除/Git 操作 bind-mounted 文件且没有大量 root-owned 文件；删除 container 后源码仍在；重建 image/container 和 workspace 后最小节点再次成功。ENV-01 不以 Gazebo、MoveIt、ros2_control、复杂网络或 Gazebo GPU 为完成条件。
 
-除非证据、复述和模块面试全部完成，否则不得标记 Completed。临时 container 修改未回写环境定义时也不得完成。
+除非证据、复述和模块面试全部完成，否则不得标记 Completed。
+
+如果为了本模块在 running container 中临时安装或修改依赖，但没有回写 Dockerfile/Compose/entrypoint 等版本化环境定义并重建验证，则模块不得 Completed。
 
 ## 模块面试范围
 
-Host 与 container 各负责什么；为什么临时 apt install 不可复现；源码为什么用 bind mount；如何证明硬件加速；删除 container 后如何恢复。
+Host/Container 边界；UID/GID 与 ownership；image/container/mount/volume；underlay/overlay；为何临时 apt install 不是可复现环境。
 
 ## 新对话上下文恢复
 
-读取 README、LEARNING_STATUS、CURRICULUM_INDEX、本文件、prerequisite 报告、Docker 架构/环境记录以及相关项目文档；不得依赖其他聊天记忆。
+读取 `README.md`、`LEARNING_STATUS.md`、`curriculum/CURRICULUM_INDEX.md`、当前 module、prerequisite reports、`curriculum/DOCKER_FIRST_ARCHITECTURE.md`、`docs/ENVIRONMENT_MANIFEST.md`，以及当前项目真实 README/evidence。不得依赖上一聊天记忆。
