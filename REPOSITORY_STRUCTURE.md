@@ -1,6 +1,6 @@
 # GitHub 新目录结构
 
-当前提交只创建课程设计与空白模板；真正教学开始后再按模块生成代码和证据，不预造空项目成果。
+当前仍只维护课程设计和空白模板；正式学习时才生成真实代码、环境与证据。
 
 ~~~text
 ros2_/
@@ -8,10 +8,17 @@ ros2_/
 ├── AUDIT.md
 ├── LEARNING_STATUS.md
 ├── REPOSITORY_STRUCTURE.md
+├── docker/
+│   ├── Dockerfile                 # ENV-01 中创建
+│   ├── compose.yaml               # mounts/network/GUI/GPU/devices
+│   ├── entrypoint.sh              # source underlay/overlay
+│   └── README.md                  # 架构、构建、重建、Fallback
 ├── curriculum/
 │   ├── CURRICULUM_INDEX.md
 │   ├── ROLE_COMPETENCY_MATRIX.md
 │   ├── TRACKS.md
+│   ├── APPLICATION_GATE.md
+│   ├── DOCKER_FIRST_ARCHITECTURE.md
 │   └── modules/<MODULE_ID>.md
 ├── prompts/
 │   ├── MODULE_TEACHING_PROMPT_TEMPLATE.md
@@ -19,34 +26,24 @@ ros2_/
 │   └── MODULE_INTERVIEW_RULES.md
 ├── docs/
 │   ├── templates/
-│   ├── modules/<MODULE_ID>/MODULE_REPORT.md
+│   ├── modules/<MODULE_ID>/
 │   ├── SYSTEM_MAP.md
 │   ├── COMMAND_CHEATSHEET.md
 │   ├── ERROR_LOG.md
 │   └── INTERVIEW_QA.md
 ├── projects/
 │   ├── PROJECTS.md
-│   ├── project_a_sim_stack/
-│   │   ├── README.md
-│   │   ├── design/
-│   │   ├── evidence/
-│   │   ├── test/
-│   │   └── src/
+│   ├── project_a/
+│   │   ├── a1_miniarm_learning/
+│   │   └── a2_full_manipulator/
 │   └── project_b_task_executor/
-│       ├── README.md
-│       ├── design/
-│       ├── evidence/
-│       ├── test/
-│       └── src/
-├── src/                         # 教学中形成的 ROS packages
-└── test_reports/                # 有版本与日期的最终测试报告
+├── src/                           # 宿主持久化源码，bind mount 到 container workspace
+└── test_reports/
 ~~~
 
-## 记录规则
+## 持久化规则
 
-- 课程定义只放 `curriculum/`，不得混入运行日志。
-- 每个模块的证据放 `docs/modules/<MODULE_ID>/`，并从 LEARNING_STATUS 链接。
-- 可复用源码放 `src/`；项目 README 只引用真实包，不复制代码。
-- 原始日志/截图放项目 evidence，摘要写模块报告；大文件避免直接进入 Git。
-- TEST_PLAN 可持续维护；每次 TEST_REPORT 固定版本、环境和日期。
-- 所有“完成”必须有链接，不能只改状态文本。
+- `src/` 和所有 Git 文件必须位于宿主仓库；container 删除不影响源码。
+- build/install/log 可选择 bind mount、named volume 或可丢弃重建策略，但必须记录。
+- 依赖变化回写 Dockerfile/Compose/entrypoint；不把手工改过的 container 当环境定义。
+- 每个 Project README 最终提供 clone→image→container→workspace build→launch 的复现链。

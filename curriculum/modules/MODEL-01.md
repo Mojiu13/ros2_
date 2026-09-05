@@ -1,10 +1,10 @@
-# MODEL-01｜最小机械臂 URDF、TF 与 RViz
+# MODEL-01｜MiniArm URDF、TF、RViz 与机器人空间基础
 
-> Phase 1 · P0 · 工作量 M
+> Phase 1 · P0 · 工作量 L
 
 ## 为什么学习
 
-岗位要求能创建、修改和调试模型，而不是只会使用现成 URDF。
+用简单 2–3 DOF MiniArm 亲手理解模型、坐标和运动空间，为复杂机械臂集成建立不黑盒的机器人学直觉。
 
 ## Prerequisites
 
@@ -12,40 +12,38 @@ SYS-01
 
 ## 环境要求
 
-RViz2、robot_state_publisher
+默认使用 ENV-01 验收通过的 Dockerized ROS2 Jazzy 环境；不假定宿主安装 ROS。
 
 ## 开始时检查
 
-读取系统地图；明确本模块只做模型显示链。
+确认 Project A2 参考链路已观察；新建 Project A1 学习模型，避免把成熟模型配置直接复制为答案。
 
 ## 核心实践任务
 
-从零建立 2–3 自由度模型；配置 link/joint/origin/axis/limit/visual；发布 joint state 与 TF；在 RViz 检查。
+从零建立 2–3 DOF URDF；配置 link/joint/origin/axis/limit/visual；发布 joint state/TF 并在 RViz 操作。通过改 joint 值和 frame 实验比较 joint space 与 Cartesian/task space；观察 base/tool/end-effector frame；构造 position/orientation/pose、RPY、quaternion、PoseStamped/frame_id 示例；用关节变化到末端位姿变化形成 FK 直觉。
 
 ## 最小理论
 
-树结构、坐标变换、固定/旋转关节、模型描述与运行时状态的区别。
+DOF、joint space、Cartesian/task space；position/orientation/pose；frame/transform；base/tool/end-effector frame；RPY/quaternion；PoseStamped/frame_id；forward kinematics 直觉，不做复杂矩阵推导。
 
 ## 故障注入
 
-断 TF、错误 parent/child、axis/origin 错、fixed frame 错、URDF 解析失败。
+TF 断链、parent/child、axis/origin/fixed frame/frame_id 错；四元数无效；混淆点的坐标与参考 frame。
 
 ## 输出文件 / Deliverables
 
-最小 URDF；显示 launch；TF 图；模型故障记录。
+Project A1 URDF、显示 launch、TF 图、空间/姿态实验表、模型故障记录。
 
 ## Exit Criteria
 
-能预测修改 origin/axis 后的现象；TF 树完整；无意外断链；面试通过。
+能预测 origin/axis/关节变化对末端 pose 的影响；能解释 pose 必须带 frame；TF 树完整；基本概念可口述。
 
-除非上述证据、复述和模块面试都完成，否则不得标记 Completed。
+除非证据、复述和模块面试全部完成，否则不得标记 Completed。临时 container 修改未回写环境定义时也不得完成。
 
 ## 模块面试范围
 
-URDF 与 TF 的关系；robot_state_publisher 与 joint_state_publisher 的区别。
-
-面试必须遵守 `prompts/MODULE_INTERVIEW_RULES.md`：先提问，后评价，再复述，最后才整理标准答案。
+DOF 与 joint space；pose/frame/transform；RPY 与 quaternion；FK 做什么；robot_state_publisher 角色。
 
 ## 新对话上下文恢复
 
-新对话先读取：`README.md`、`LEARNING_STATUS.md`、`curriculum/CURRICULUM_INDEX.md`、本文件、所有 Prerequisites 的模块报告，以及本模块涉及项目的 README/设计/错误记录。不得假设记得上一聊天。
+读取 README、LEARNING_STATUS、CURRICULUM_INDEX、本文件、prerequisite 报告、Docker 架构/环境记录以及相关项目文档；不得依赖其他聊天记忆。

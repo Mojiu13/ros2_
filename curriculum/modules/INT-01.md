@@ -1,10 +1,10 @@
-# INT-01｜第一遍全链路集成验收
+# INT-01｜6/7 DOF 全链路集成验收
 
 > Phase 1 · P0 · 工作量 M
 
 ## 为什么学习
 
-把零散成功合成可重复系统，并在深入前确认每层边界。
+把 A2 的成熟 6/7 DOF 模型、Docker、Gazebo、ros2_control、MoveIt 与代码组合成最低工程基线。
 
 ## Prerequisites
 
@@ -12,40 +12,38 @@ MOVEIT-02
 
 ## 环境要求
 
-自建模型、仿真、控制、MoveIt 全部可启动
+默认使用 ENV-01 验收通过的 Dockerized ROS2 Jazzy 环境；不假定宿主安装 ROS。
 
 ## 开始时检查
 
-逐项读取 Phase 1 产物；列出已知未解决问题。
+A1 学习证据完整；A2 的版本、模型、controller、MoveIt 配置与 Docker 环境均有基线。
 
 ## 核心实践任务
 
-从干净终端启动全栈；执行 named/joint/pose 目标；采集计算图、TF、controller 和 action 证据；做一次分层故障定位。
+从新建 container/干净 workspace 构建并启动 A2；执行 named/joint/pose；采集 container/mount/network、计算图、TF、controller、action、规划/执行/反馈证据；完成一次分层故障定位。
 
 ## 最小理论
 
-需求→节点→接口→配置→执行→反馈的端到端视角。
+Host→container→ROS→model→planning→trajectory→controller→simulated robot→feedback 的端到端边界。
 
 ## 故障注入
 
-从环境、launch、TF、MoveIt、controller 中随机选择一层注入单一故障。
+从 Docker network/mount、TF、MoveIt、controller、application 中选择一个单一故障。
 
 ## 输出文件 / Deliverables
 
-Project A v1；系统地图 v2；集成验收报告；阶段面试记录。
+Project A2 v1、系统地图 v2、集成验收报告、最小可复现 README、阶段面试。
 
 ## Exit Criteria
 
-可重复启动和运行；能在限定排查树内定位单故障；全部 P0 证据齐全。
+删除/重建 container 后 A2 仍可重复；6/7 DOF 全链路运行；能定位单故障。最终求职集成证据明确来自 A2。
 
-除非上述证据、复述和模块面试都完成，否则不得标记 Completed。
+除非证据、复述和模块面试全部完成，否则不得标记 Completed。临时 container 修改未回写环境定义时也不得完成。
 
 ## 模块面试范围
 
-从目标到关节运动的数据流；反馈如何回到应用；完整排查顺序。
-
-面试必须遵守 `prompts/MODULE_INTERVIEW_RULES.md`：先提问，后评价，再复述，最后才整理标准答案。
+从目标到 6/7 DOF 运动的数据流；Docker 对链路的影响；Plan/Execute 和反馈边界。
 
 ## 新对话上下文恢复
 
-新对话先读取：`README.md`、`LEARNING_STATUS.md`、`curriculum/CURRICULUM_INDEX.md`、本文件、所有 Prerequisites 的模块报告，以及本模块涉及项目的 README/设计/错误记录。不得假设记得上一聊天。
+读取 README、LEARNING_STATUS、CURRICULUM_INDEX、本文件、prerequisite 报告、Docker 架构/环境记录以及相关项目文档；不得依赖其他聊天记忆。

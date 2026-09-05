@@ -2,15 +2,15 @@
 
 | 岗位要求 | 对应能力 | 课程模块 | 优先级 | 最终证据 |
 |---|---|---|---:|---|
-| ROS 机械手需求/方案/开发 | 接口分层、节点架构、任务状态机、C++/Python 实现 | ROS-01~03, SYS-01, APP-01 | P0 | Project B 接口、状态机、设计文档 |
-| 多自由度机械手调试与优化 | 分层诊断、controller/trajectory/规划参数实验 | CTRL-01~03, MOVEIT-03, DBG-01 | P0/P1 | 故障决策树、参数实验、回归结果 |
-| ROS 应用场景开发 | action 任务接口、反馈/结果、取消/超时/恢复 | APP-01, APP-02 | P0/P1 | Project B v1/v2 演示与测试 |
-| 搭建仿真与修改 URDF 参数 | URDF/Xacro、TF、碰撞/惯性、Gazebo Sim | MODEL-01~02, SIM-01 | P0/P1 | Project A 模型、参数实验报告 |
-| ROS 应用开发基础 | package、node、通信、launch、参数、YAML、命名 | ENV-01, ROS-01~04 | P0/P1 | 双语言包、配置示例、计算图 |
-| ros2_control/机械臂执行 | interfaces、lifecycle、controller、FJT | CTRL-01~03 | P0/P1 | 直接轨迹执行与 controller 调试卡 |
-| MoveIt 规划执行 | SRDF/config、PlanningScene、plan/execute | MOVEIT-01~03 | P0/P1 | 自建机械臂规划执行与轨迹报告 |
-| Linux/Unix/Git 工程环境 | workspace、依赖、构建、shell、日志、版本管理 | ENV-01 | P0 | 可复现环境基线与错误记录 |
-| 软件功能测试与优化 | 正常/边界/异常/回归、pytest/gtest、集成测试 | TEST-01 | P0 | TEST_PLAN、自动化测试、TEST_REPORT |
-| 软件设计与测试报告 | 需求、架构、接口、时序、调试和测试文档 | DOC-01 | P0 | 完整文档包与证据索引 |
-| 机器人项目经验 | 两个持续演化、可答辩项目 | INT-01, APP-01~02, DOC-01 | P0/P1 | Project A/B GitHub 成果 |
-| 底层/规划加分 | 源码、自定义 controller、规划基准 | ADV-01~03 | P2 | 可选实验，不影响主线 |
+| 可复现 ROS 开发环境 | Dockerfile/Compose、持久化 workspace、GUI/GPU、容器网络、重建 | ENV-01, ROS-01, SIM-01 | P0 | docker/ 定义、重建记录、图形与 discovery 证据 |
+| ROS 机械手需求/方案/开发 | 需求、接口、节点架构、Task action、状态机、C++/Python | ROS-01~03, APP-01A/B | P0 | REQUIREMENTS、INTERFACE_DESIGN、TaskNode、Python client |
+| 多自由度机械手集成 | 成熟 6/7 DOF 模型上的 MoveIt/controller/Gazebo 集成 | SYS-01, MOVEIT-01/02, INT-01 | P0 | Project A2 全链路与集成报告 |
+| 自建模型与仿真理解 | 2–3 DOF MiniArm、URDF/Xacro/TF、碰撞/惯性、Gazebo | MODEL-01, SIM-01, CTRL-01 | P0 | Project A1 参数实验和模型证据 |
+| 最低机器人学理解 | DOF、joint/task space、pose/frame/transform、FK/IK/工作空间/奇异直觉 | MODEL-01, MOVEIT-01/02 | P0 | 模型实验、pose goal 与失败解释 |
+| ros2_control 执行 | interfaces、lifecycle、controller、FollowJointTrajectory | CTRL-01~03 | P0/P1 | 直接轨迹、状态/接口图、参数实验 |
+| 可控失败的应用 | cancel、timeout、错误传播、有限 retry/replan | APP-02A/B | P0/P1 | Project B 错误语义与恢复策略 |
+| 跨层调试 | Host→Docker→ROS→model→controller→MoveIt→application | DBG-01 | P0 | 决策树与可复现 ERROR_LOG |
+| 软件功能测试 | Requirement→Test Case、pytest/gtest、launch/integration、回归 | TEST-01 | P0 | TEST_PLAN、自动化测试、TEST_REPORT |
+| 设计与测试报告 | 需求追踪、架构、时序、配置、调试、测试文档 | APP-01A, DOC-01 | P0 | 软件设计与测试文档包 |
+| 最低求职表达 | 项目事实、故障案例、白板链路、简历证据 | APPLICATION_GATE, JOB-01 | P0 | Project README、Pitch、问答与简历条目 |
+| 底层/规划加分 | 源码、自定义 controller、深入运动学/规划参数 | ADV-01~03 | P2 | 可选实验，不阻塞投递 |

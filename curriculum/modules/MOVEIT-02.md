@@ -1,10 +1,10 @@
-# MOVEIT-02｜C++/Python 编程规划与执行
+# MOVEIT-02｜C++/Python 编程规划与执行及运动学直觉
 
 > Phase 1 · P0 · 工作量 L
 
 ## 为什么学习
 
-把 GUI 成功转换为可维护应用代码，同时证明 C++ 主力与 Python 工具能力。
+在 A2 上把 GUI 闭环转换为 C++/Python 应用代码，并巩固规划失败所对应的机器人学含义。
 
 ## Prerequisites
 
@@ -12,40 +12,38 @@ MOVEIT-01
 
 ## 环境要求
 
-优先使用 Jazzy 官方稳定 API；记录实际 API 选择
+默认使用 ENV-01 验收通过的 Dockerized ROS2 Jazzy 环境；不假定宿主安装 ROS。
 
 ## 开始时检查
 
-RViz 闭环成功；读取 MoveIt 配置映射。
+A2 RViz 闭环成功；确认 Jazzy 当前稳定 API，记录 C++/Python API 选择和版本。
 
 ## 核心实践任务
 
-C++ 实现 named/joint/pose target 的 plan→inspect→execute；Python 实现任务调用、数据检查或等价接口；输出成功/失败、耗时和错误语义。
+C++ 实现 named/joint/pose target 的 plan→inspect→execute；Python 实现任务调用或等价验证工具。记录 FK/IK 输入输出、可能的多 IK solution、unreachable/limit/workspace/near-singularity 现象；输出规划/执行耗时与错误。
 
 ## 最小理论
 
-start state、goal constraints、RobotTrajectory、规划与执行 API 边界。
+start state、goal constraints、RobotTrajectory；FK/IK 工程边界；规划与执行 API；singularity 只讲诊断直觉。
 
 ## 故障注入
 
-current state 超时、不可达 pose、空轨迹、执行 server 缺失、API/发行版差异。
+current state 超时、frame_id 错、无 IK、超限、空轨迹、execution server 缺失、API 版本差异。
 
 ## 输出文件 / Deliverables
 
-C++ 规划节点；Python 辅助/客户端；API 决策记录；结果日志。
+A2 C++ 节点、Python 客户端/工具、API 决策、运动学失败记录、结果日志。
 
 ## Exit Criteria
 
-至少两类目标可编程执行；失败不会被误报成功；能解释选择的 Jazzy API。
+6/7 DOF 上至少两类目标稳定执行，第三类有明确错误；不误报失败；能解释目标如何变成轨迹。
 
-除非上述证据、复述和模块面试都完成，否则不得标记 Completed。
+除非证据、复述和模块面试全部完成，否则不得标记 Completed。临时 container 修改未回写环境定义时也不得完成。
 
 ## 模块面试范围
 
-如何设置 start/goal；plan 与 execute 返回值如何处理；Python 与 C++ 各放哪层。
-
-面试必须遵守 `prompts/MODULE_INTERVIEW_RULES.md`：先提问，后评价，再复述，最后才整理标准答案。
+start/goal；joint/pose target；IK solution；unreachable vs planning failure；Python/C++ 分工。
 
 ## 新对话上下文恢复
 
-新对话先读取：`README.md`、`LEARNING_STATUS.md`、`curriculum/CURRICULUM_INDEX.md`、本文件、所有 Prerequisites 的模块报告，以及本模块涉及项目的 README/设计/错误记录。不得假设记得上一聊天。
+读取 README、LEARNING_STATUS、CURRICULUM_INDEX、本文件、prerequisite 报告、Docker 架构/环境记录以及相关项目文档；不得依赖其他聊天记忆。
