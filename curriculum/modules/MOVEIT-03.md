@@ -16,11 +16,15 @@ INT-01
 
 如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。
 
-编程规划执行可用## 开始时检查
+编程规划执行可用
+
+## 开始时检查
 
 先确认 Docker Engine、目标 image/container、宿主 source bind mount、ROS underlay、workspace overlay，以及 prerequisite 报告/项目证据。
 
-保存无障碍基线轨迹与时间。## 核心实践任务
+保存无障碍基线轨迹与时间。
+
+## 核心实践任务
 
 增删碰撞物；观察 current scene/state；调整 scaling、规划时间和尝试次数；检查 trajectory positions/velocities/accelerations/time；做简单路径约束。
 

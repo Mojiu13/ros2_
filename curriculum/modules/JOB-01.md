@@ -14,11 +14,15 @@ DOC-01
 
 默认使用 ENV-01 验收通过的 Dockerized ROS2 Jazzy 环境；不假定 Host 安装 ROS。
 
-如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。## 开始时检查
+如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。
+
+## 开始时检查
 
 先确认 Docker Engine、目标 image/container、宿主 source bind mount、ROS underlay、workspace overlay，以及 prerequisite 报告/项目证据。
 
-Application Gate 已达成；TEST-01 与 DOC-01 完成；不得包装未实现功能。## 核心实践任务
+Application Gate 已达成；TEST-01 与 DOC-01 完成；不得包装未实现功能。
+
+## 核心实践任务
 
 30秒/3分钟/10分钟项目介绍；解释 A1 学习价值与 A2 求职复杂度；Docker 可复现环境；能力证据表；白板链路；跨层故障、测试和需求追问；简历描述；把真实面试反馈写回状态。
 

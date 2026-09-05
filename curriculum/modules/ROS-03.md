@@ -16,11 +16,15 @@ ROS-02
 
 如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。
 
-两个基础包可运行## 开始时检查
+两个基础包可运行
+
+## 开始时检查
 
 先确认 Docker Engine、目标 image/container、宿主 source bind mount、ROS underlay、workspace overlay，以及 prerequisite 报告/项目证据。
 
-读取双语言包结构和当前接口名。## 核心实践任务
+读取双语言包结构和当前接口名。
+
+## 核心实践任务
 
 统一 launch 多节点；从 YAML 加载参数；实验 namespace/remap；检查最终节点名、接口名和参数值。
 

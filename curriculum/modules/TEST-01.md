@@ -14,11 +14,15 @@ APP-02A
 
 默认使用 ENV-01 验收通过的 Dockerized ROS2 Jazzy 环境；不假定 Host 安装 ROS。
 
-如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。## 开始时检查
+如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。
+
+## 开始时检查
 
 先确认 Docker Engine、目标 image/container、宿主 source bind mount、ROS underlay、workspace overlay，以及 prerequisite 报告/项目证据。
 
-REQUIREMENTS、TaskNode v1、APP-02A 错误语义存在；冻结被测版本和 Docker image 标识。## 核心实践任务
+REQUIREMENTS、TaskNode v1、APP-02A 错误语义存在；冻结被测版本和 Docker image 标识。
+
+## 核心实践任务
 
 为每个 FR/NFR 建 Requirement→Test Case 矩阵，例如 FR-01→TC-01；覆盖正常、边界、非法、cancel、timeout、planning/execution/controller/action failure、回归；Python pytest、C++ gtest 与基础 ROS launch/integration test；记录 expected/actual/result。
 

@@ -14,11 +14,15 @@ APP-01A
 
 默认使用 ENV-01 验收通过的 Dockerized ROS2 Jazzy 环境；不假定 Host 安装 ROS。
 
-如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。## 开始时检查
+如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。
+
+## 开始时检查
 
 先确认 Docker Engine、目标 image/container、宿主 source bind mount、ROS underlay、workspace overlay，以及 prerequisite 报告/项目证据。
 
-APP-01A 的 REQUIREMENTS、接口和骨架已评审；A2 编程规划执行回归通过。## 核心实践任务
+APP-01A 的 REQUIREMENTS、接口和骨架已评审；A2 编程规划执行回归通过。
+
+## 核心实践任务
 
 C++ TaskNode 支持 named/joint/pose target；调用 MoveIt planning/execution；明确 planning 与 execution error；发布真实 feedback/result；实现 RECEIVED/VALIDATING/PLANNING/EXECUTING/SUCCEEDED/FAILED 最小状态机。Python client 覆盖三类请求。
 

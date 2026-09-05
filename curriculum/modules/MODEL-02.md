@@ -16,11 +16,15 @@ INT-01
 
 如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。
 
-Project A v1## 开始时检查
+Project A v1
+
+## 开始时检查
 
 先确认 Docker Engine、目标 image/container、宿主 source bind mount、ROS underlay、workspace overlay，以及 prerequisite 报告/项目证据。
 
-固定可工作的模型版本作为对照。## 核心实践任务
+固定可工作的模型版本作为对照。
+
+## 核心实践任务
 
 模块化 Xacro；mesh/坐标约定；limit/mimic；collision 简化；inertial 合理性；模型静态检查与参数回归。
 

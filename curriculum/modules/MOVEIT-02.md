@@ -14,11 +14,15 @@ MOVEIT-01
 
 默认使用 ENV-01 验收通过的 Dockerized ROS2 Jazzy 环境；不假定 Host 安装 ROS。
 
-如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。## 开始时检查
+如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。
+
+## 开始时检查
 
 先确认 Docker Engine、目标 image/container、宿主 source bind mount、ROS underlay、workspace overlay，以及 prerequisite 报告/项目证据。
 
-A2 RViz 闭环成功；确认 Jazzy 当前稳定 API，记录 C++/Python API 选择和版本。## 核心实践任务
+A2 RViz 闭环成功；确认 Jazzy 当前稳定 API，记录 C++/Python API 选择和版本。
+
+## 核心实践任务
 
 C++ 实现 named/joint/pose target 的 plan→inspect→execute；Python 实现任务调用或等价验证工具。记录 FK/IK 输入输出、可能的多 IK solution、unreachable/limit/workspace/near-singularity 现象；输出规划/执行耗时与错误。
 

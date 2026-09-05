@@ -9,4 +9,4 @@
 - Action learning gap：Pass。ROS-02 在 APP-01A 前覆盖 custom interface 与最小跨语言 Action server/client/cancel。
 - Application Gate：Pass。技术证据、两个项目最小 README 和 MINIMUM_RESUME_EVIDENCE 均有明确要求。
 
-结论：无冻结 blocker。正式学习仍须以真实硬件/软件状态和官方当前文档为准。
+结论：无冻结 blocker。课程架构正式冻结；正式学习仍须以真实硬件/软件状态和官方当前文档为准。

@@ -16,11 +16,15 @@ ROS-03
 
 如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。
 
-默认使用 ENV-01 的最小 Dockerized Jazzy 环境；不假定 Host 安装 ROS。若参考系统首次需要 RViz/MoveIt runtime，在 SYS-01 按当前官方文档 Just-In-Time 加入、重建并记录版本；这里只加入观察参考系统所需依赖，不提前加入全部 MoveIt development 工具。## 开始时检查
+默认使用 ENV-01 的最小 Dockerized Jazzy 环境；不假定 Host 安装 ROS。若参考系统首次需要 RViz/MoveIt runtime，在 SYS-01 按当前官方文档 Just-In-Time 加入、重建并记录版本；这里只加入观察参考系统所需依赖，不提前加入全部 MoveIt development 工具。
+
+## 开始时检查
 
 先确认 Docker Engine、目标 image/container、宿主 source bind mount、ROS underlay、workspace overlay，以及 prerequisite 报告/项目证据。
 
-先确认 Docker Engine、目标 image/container、source mount、ROS underlay、workspace overlay、ROS-03 证据。教学时依据 Jazzy 当前维护状态选择 A2 型号；如果第一次正式运行 RViz，在本模块配置并验证必要的 Host→Container GUI 通道。## 核心实践任务
+先确认 Docker Engine、目标 image/container、source mount、ROS underlay、workspace overlay、ROS-03 证据。教学时依据 Jazzy 当前维护状态选择 A2 型号；如果第一次正式运行 RViz，在本模块配置并验证必要的 Host→Container GUI 通道。
+
+## 核心实践任务
 
 在 RViz/Gazebo（若参考包支持）完成规划执行；观察节点、TF、joint_states、MoveIt 与 controller action；画规划、执行、反馈链并记录参考模型来源/版本。
 

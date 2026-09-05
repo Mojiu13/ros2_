@@ -1,8 +1,8 @@
 # LEARNING_STATUS
 
-课程版本：2026-09 Freeze Candidate 2
+课程版本：2026-09 Frozen
 
-当前状态：Not Started。冻结审计待本次提交验证；尚未开始 ENV-01。
+当前状态：Not Started。课程架构已通过冻结审计，尚未开始 ENV-01。
 
 | Module | Priority | Status | Evidence link | Interview | Notes |
 |---|---:|---|---|---|---|

@@ -16,11 +16,15 @@ SIM-01
 
 如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。
 
-默认使用 ENV-01 的 Dockerized Jazzy 环境；不假定 Host 安装 ROS。到 CTRL-01 才正式加入 ros2_control、ros2_controllers、gz_ros2_control 或 Jazzy 当前等价集成，更新环境定义、重建并记录版本。## 开始时检查
+默认使用 ENV-01 的 Dockerized Jazzy 环境；不假定 Host 安装 ROS。到 CTRL-01 才正式加入 ros2_control、ros2_controllers、gz_ros2_control 或 Jazzy 当前等价集成，更新环境定义、重建并记录版本。
+
+## 开始时检查
 
 先确认 Docker Engine、目标 image/container、宿主 source bind mount、ROS underlay、workspace overlay，以及 prerequisite 报告/项目证据。
 
-模型在 Gazebo 稳定；关节名与 limit 已冻结为基线。## 核心实践任务
+模型在 Gazebo 稳定；关节名与 limit 已冻结为基线。
+
+## 核心实践任务
 
 添加 ros2_control 描述；配置 state/command interface；启动 controller_manager、joint_state_broadcaster、joint_trajectory_controller；观察 lifecycle 和 interfaces。
 

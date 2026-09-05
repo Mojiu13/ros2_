@@ -14,11 +14,15 @@ INT-01
 
 默认使用 ENV-01 验收通过的 Dockerized ROS2 Jazzy 环境；不假定 Host 安装 ROS。
 
-如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。## 开始时检查
+如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。
+
+## 开始时检查
 
 先确认 Docker Engine、目标 image/container、宿主 source bind mount、ROS underlay、workspace overlay，以及 prerequisite 报告/项目证据。
 
-Project A2/INT-01 稳定；选择一个具体但不过大的任务场景；检查已有项目证据。## 核心实践任务
+Project A2/INT-01 稳定；选择一个具体但不过大的任务场景；检查已有项目证据。
+
+## 核心实践任务
 
 编写 REQUIREMENTS.md：FR-01...、NFR-01... 与 acceptance criteria；至少覆盖 named target、joint target、feedback、明确 result、非法目标拒绝、planning/execution 分离、有限等待、可诊断日志、配置分离。设计 INTERFACE_DESIGN 和 Task.action 的 goal/feedback/result/error 字段；实现 C++ Action Server skeleton 与 Python client，只验证接口生命周期和输入校验，不接入 MoveIt。
 

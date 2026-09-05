@@ -16,11 +16,15 @@ MODEL-01
 
 如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。
 
-默认使用 ENV-01 的 Dockerized Jazzy 环境；不假定 Host 安装 ROS。到 SIM-01 才正式按官方文档加入 Gazebo Sim、ros_gz 和 GUI/GPU simulation requirements，更新环境定义、重建并记录 Gazebo release、renderer 与 GPU vendor 配置。## 开始时检查
+默认使用 ENV-01 的 Dockerized Jazzy 环境；不假定 Host 安装 ROS。到 SIM-01 才正式按官方文档加入 Gazebo Sim、ros_gz 和 GUI/GPU simulation requirements，更新环境定义、重建并记录 Gazebo release、renderer 与 GPU vendor 配置。
+
+## 开始时检查
 
 先确认 Docker Engine、目标 image/container、宿主 source bind mount、ROS underlay、workspace overlay，以及 prerequisite 报告/项目证据。
 
-MODEL-01 的 TF/pose 基线正确；复查 Host display、GPU vendor/driver、container renderer 和 Gazebo Jazzy 对应集成版本。## 核心实践任务
+MODEL-01 的 TF/pose 基线正确；复查 Host display、GPU vendor/driver、container renderer 和 Gazebo Jazzy 对应集成版本。
+
+## 核心实践任务
 
 重构 Xacro，补 collision/inertial，spawn 到 Gazebo Sim；修改质量、惯性、damping、friction、collision。对 RViz2/Gazebo 做 GUI smoke test，记录显示协议与 renderer；比较硬件加速和意外软件渲染现象。
 

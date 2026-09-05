@@ -12,11 +12,11 @@ CTRL-01
 
 ## 环境要求
 
-使用 Dockerized Jazzy 环境。CTRL-01 时已经 Just-In-Time 加入 ros2_control 栈；Stage B 若 A2 模型需要额外 runtime/config，必须更新环境定义、重建、验证并记录版本。
+默认使用 ENV-01 验收通过的 Dockerized ROS2 Jazzy 环境；不假定 Host 安装 ROS。CTRL-01 时已经 Just-In-Time 加入 ros2_control 栈；Stage B 若 A2 模型需要额外 runtime/config，必须更新环境定义、重建、验证并记录版本。
 
 ## 开始时检查
 
-确认 Docker/image/container、mount、underlay/overlay、CTRL-01 的 A1 controller 证据；读取 SYS-01 已选定的 A2 模型、版本和参考基线。Stage B 开始前确认 A2 Gazebo/simulated hardware 入口可获得。
+先确认 Docker Engine、目标 image/container、宿主 source bind mount、ROS underlay、workspace overlay、CTRL-01 的 A1 controller 证据；读取 SYS-01 已选定的 A2 模型、版本和参考基线。Stage B 开始前确认 A2 Gazebo/simulated hardware 入口可获得。
 
 ## 核心实践任务
 

@@ -14,11 +14,15 @@ APP-02A
 
 默认使用 ENV-01 验收通过的 Dockerized ROS2 Jazzy 环境；不假定 Host 安装 ROS。
 
-如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。## 开始时检查
+如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。
+
+## 开始时检查
 
 先确认 Docker Engine、目标 image/container、宿主 source bind mount、ROS underlay、workspace overlay，以及 prerequisite 报告/项目证据。
 
-APP-02A 可控失败、Project A2/B 正常基线存在；一次只注入一个故障。## 核心实践任务
+APP-02A 可控失败、Project A2/B 正常基线存在；一次只注入一个故障。
+
+## 核心实践任务
 
 按 Host OS→Docker Engine→container/image/user/UID/GID/permissions/mount/network→ROS installation/environment→workspace/build/install→launch/config→ROS graph→TF/model→Gazebo→ros2_control→controller→MoveIt→application 分层。覆盖未 source、包/build/launch、discovery、GUI/GPU、TF/URDF/joint mismatch、inactive controller、action missing、planning/start state/execution/timeout/mismatch。
 

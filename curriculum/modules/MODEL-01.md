@@ -14,11 +14,15 @@ SYS-01
 
 默认使用 ENV-01 验收通过的 Dockerized ROS2 Jazzy 环境；不假定 Host 安装 ROS。
 
-如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。## 开始时检查
+如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。
+
+## 开始时检查
 
 先确认 Docker Engine、目标 image/container、宿主 source bind mount、ROS underlay、workspace overlay，以及 prerequisite 报告/项目证据。
 
-确认 Project A2 参考链路已观察；新建 Project A1 学习模型，避免把成熟模型配置直接复制为答案。## 核心实践任务
+确认 Project A2 参考链路已观察；新建 Project A1 学习模型，避免把成熟模型配置直接复制为答案。
+
+## 核心实践任务
 
 从零建立 2–3 DOF URDF；配置 link/joint/origin/axis/limit/visual；发布 joint state/TF 并在 RViz 操作。通过改 joint 值和 frame 实验比较 joint space 与 Cartesian/task space；观察 base/tool/end-effector frame；构造 position/orientation/pose、RPY、quaternion、PoseStamped/frame_id 示例；用关节变化到末端位姿变化形成 FK 直觉。
 

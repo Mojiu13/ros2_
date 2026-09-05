@@ -14,11 +14,15 @@ APP-01B
 
 默认使用 ENV-01 验收通过的 Dockerized ROS2 Jazzy 环境；不假定 Host 安装 ROS。
 
-如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。## 开始时检查
+如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。
+
+## 开始时检查
 
 先确认 Docker Engine、目标 image/container、宿主 source bind mount、ROS underlay、workspace overlay，以及 prerequisite 报告/项目证据。
 
-APP-01B v1 和需求追踪存在；明确每个等待阶段的边界和最终 result。## 核心实践任务
+APP-01B v1 和需求追踪存在；明确每个等待阶段的边界和最终 result。
+
+## 核心实践任务
 
 实现 cancel request 与 acceptance/rejection；planning/execution timeout；client interruption；planning failure、execution failure、controller unavailable、action server unavailable 的错误传播；统一 final result，确保资源清理和状态终止。本模块不做 retry/replan。
 

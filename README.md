@@ -2,7 +2,7 @@
 
 面向第一份 ROS2 机械臂应用开发 / 软件工程岗位。默认技术环境为 **Ubuntu 24.04 Host + Docker + ROS2 Jazzy Container**，主线保持 C++/Python、RViz2、URDF/Xacro、Gazebo Sim、ros2_control 与 MoveIt 2。
 
-课程架构已进入最终冻结候选版：本次只对既有 Phase / Module 做 Docker-first、项目复杂度、机器人基础、APP 粒度和求职 Gate 的局部修订，未扩大岗位范围。
+课程架构已经正式冻结：本次只对既有 Phase / Module 做 Docker-first、项目复杂度、机器人基础、APP 粒度和求职 Gate 的局部修订，未扩大岗位范围。
 
 ## 环境原则
 
