@@ -35,7 +35,7 @@
 - Project A：MiniArm Simulation Stack。证明模型、Gazebo、ros2_control、MoveIt 与完整执行链能力。
 - Project B：Task Execution & Recovery。证明 C++/Python 应用开发、action 接口、取消/超时/恢复、测试和文档能力。
 
-项目边界与证据见 [`projects/PROJECTS.md`](projects/PROJECTS.md)。
+项目边界与证据见 [`projects/PROJECTS.md`](projects/PROJECTS.md)。仓库的当前设计区与未来学习产物区见 [`REPOSITORY_STRUCTURE.md`](REPOSITORY_STRUCTURE.md)。
 
 ## 从新对话开始模块
 
