@@ -4,7 +4,7 @@ Phase 架构保持不变。模块按依赖排序；Application Gate 是投递检
 
 | Module | 名称 | 阶段 | 优先级 | Prerequisites | 工作量 |
 |---|---|---|---:|---|---|
-| [ENV-01](modules/ENV-01.md) | Docker 化 ROS2 Jazzy 最小开发环境与可重建工作区 | Phase 0 | P0 | 基本 Linux 使用；C++ / Python 基础；不要求 ROS 或 Docker 深入知识 | L |
+| [ENV-01](modules/ENV-01.md) | Docker 化 ROS2 Jazzy 最小开发环境与可重建工作区 | Phase 0 | P0 | 基本 Linux 使用；C++ / Python 基础；不要求 ROS 或 Docker 深入知识 | M |
 | [ROS-01](modules/ROS-01.md) | ROS 2 计算图、CLI、通信选择与容器网络 | Phase 0 | P0 | ENV-01 | M |
 | [ROS-02](modules/ROS-02.md) | Python 与 C++ ROS 包最小工程 | Phase 0 | P0 | ROS-01 | L |
 | [ROS-03](modules/ROS-03.md) | Launch、Parameter、YAML、Namespace 与 Remap | Phase 0 | P0 | ROS-02 | M |
