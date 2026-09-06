@@ -12,17 +12,11 @@ CTRL-02
 
 ## 环境要求
 
-默认使用 ENV-01 验收通过的 Dockerized ROS2 Jazzy 环境；不假定 Host 安装 ROS。
-
-如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。
-
-默认使用 ENV-01 的 Dockerized Jazzy 环境；不假定 Host 安装 ROS。到 MOVEIT-01 才正式加入本项目所需 MoveIt2 development dependencies，更新环境定义、重建并记录 MoveIt package/version。SYS-01 已有的 runtime 依赖不替代本次开发环境验收。
+默认使用 ENV-01 验收通过的 Dockerized ROS2 Jazzy 环境；不假定 Host 安装 ROS。到 MOVEIT-01 才正式加入本项目所需 MoveIt2 development dependencies；如果本模块新增依赖，必须更新 Dockerfile/Compose/entrypoint 等版本化环境定义，重建 image/container，验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。SYS-01 已有的 runtime 依赖不替代本次开发环境验收。
 
 ## 开始时检查
 
-先确认 Docker Engine、目标 image/container、宿主 source bind mount、ROS underlay、workspace overlay，以及 prerequisite 报告/项目证据。
-
-先确认 Docker Engine、目标 image/container、source mount、ROS underlay、workspace overlay，并读取 CTRL-02 的 A2 Stage B 报告。必须先证明成熟 6/7 DOF A2 的 Gazebo/simulated hardware、joint_state_broadcaster、joint_trajectory_controller、FollowJointTrajectory 和 direct trajectory 均正常；否则不得开始 MoveIt。实际型号仍在 SYS-01 根据 Jazzy/Gazebo/ros2_control/MoveIt/Docker 支持状态选择，不提前写死。
+先确认 Docker Engine、目标 image/container、宿主 source bind mount、ROS underlay、workspace overlay，以及 prerequisite 报告/项目证据。读取 CTRL-02 的 A2 Stage B 报告；必须先证明成熟 6/7 DOF A2 的 Gazebo/simulated hardware、joint_state_broadcaster、joint_trajectory_controller、FollowJointTrajectory 和 direct trajectory 均正常，否则不得开始 MoveIt。实际型号仍在 SYS-01 根据 Jazzy/Gazebo/ros2_control/MoveIt/Docker 支持状态选择，不提前写死。
 
 ## 核心实践任务
 
