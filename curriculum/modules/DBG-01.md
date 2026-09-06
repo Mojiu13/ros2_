@@ -12,19 +12,17 @@ APP-02A
 
 ## 环境要求
 
-默认使用 ENV-01 验收通过的 Dockerized ROS2 Jazzy 环境；不假定 Host 安装 ROS。
-
-如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。
+默认使用 ENV-01 已构建并验收的完整 `ros2-dev` image；不假定 Host 安装 ROS。正常情况下只启动主 development container、进入容器并确认本模块所需 package 可用，然后直接开始 ROS/机器人软件学习。只有实际缺包、版本冲突或新增项目特定依赖时才修改环境定义、重建并更新 `docs/ENVIRONMENT_MANIFEST.md`。
 
 ## 开始时检查
 
-先确认 Docker Engine、目标 image/container、宿主 source bind mount、ROS underlay、workspace overlay，以及 prerequisite 报告/项目证据。
+[HOST] 如主环境未运行，启动既有 Compose 项目。[CONTAINER] 确认 workspace/source mount、ROS underlay、workspace overlay和本模块 prerequisite evidence；检查本模块所需 package 可用。环境正常时不重新审计 Docker。
 
 APP-02A 可控失败、Project A2/B 正常基线存在；一次只注入一个故障。
 
 ## 核心实践任务
 
-按 Host OS→Docker Engine→container/image/user/UID/GID/permissions/mount/network→ROS installation/environment→workspace/build/install→launch/config→ROS graph→TF/model→Gazebo→ros2_control→controller→MoveIt→application 分层。覆盖未 source、包/build/launch、discovery、GUI/GPU、TF/URDF/joint mismatch、inactive controller、action missing、planning/start state/execution/timeout/mismatch。
+保留 Host→Docker/container/user/mount→ROS environment→workspace→ROS graph→TF/model→Gazebo→ros2_control/controller→MoveIt→application 分层。复用 ENV-01 的一个 Docker 故障案例理解边界；新增故障训练主要覆盖未 source、package/build/launch、topic/action、TF/URDF/joint mismatch、inactive controller、planning/start state/execution/timeout 等 ROS 与机器人软件问题。
 
 ## 最小理论
 
@@ -32,7 +30,7 @@ APP-02A 可控失败、Project A2/B 正常基线存在；一次只注入一个�
 
 ## 故障注入
 
-本模块即系统化注入；禁止同时叠加未知故障。
+不主动制造大量 Docker 故障。Docker 层最多复查一个已有案例；其余注入集中在 ROS graph、TF/model、Gazebo、ros2_control/controller、MoveIt 和 application，且一次只注入一个未知故障。
 
 ## 输出文件 / Deliverables
 
@@ -40,11 +38,11 @@ DEBUGGING_PLAYBOOK、ERROR_LOG、分层决策树、Application Gate 核心案例
 
 ## Exit Criteria
 
-每个代表案例有正常基线、现象、观察、层级、假设验证、根因、修复和回归；至少覆盖 Gate 要求的五个故障族。
+每个代表案例有正常基线、现象、观察、层级、假设验证、根因、修复和回归；主要案例来自 ROS 与机器人软件层，Docker 不喧宾夺主。
 
 除非证据、复述和模块面试全部完成，否则不得标记 Completed。
 
-如果为了本模块在 running container 中临时安装或修改依赖，但没有回写 Dockerfile/Compose/entrypoint 等版本化环境定义并重建验证，则模块不得 Completed。
+如果实际修改了运行环境，或为诊断在 running container 中临时安装了依赖，必须回写 Dockerfile/Compose/entrypoint、重建验证并更新 `docs/ENVIRONMENT_MANIFEST.md`；否则模块不得 Completed。
 
 ## 模块面试范围
 
@@ -52,4 +50,4 @@ DEBUGGING_PLAYBOOK、ERROR_LOG、分层决策树、Application Gate 核心案例
 
 ## 新对话上下文恢复
 
-读取 `README.md`、`LEARNING_STATUS.md`、`curriculum/CURRICULUM_INDEX.md`、当前 module、prerequisite reports、`curriculum/DOCKER_FIRST_ARCHITECTURE.md`、`docs/ENVIRONMENT_MANIFEST.md`，以及当前项目真实 README/evidence。不得依赖上一聊天记忆。
+读取 README、LEARNING_STATUS、CURRICULUM_INDEX、当前 module、prerequisite reports、Docker architecture、ENVIRONMENT_MANIFEST 和当前项目真实 README/evidence。ENV-01 完成后默认环境稳定；除非出现容器、权限、GUI、缺包、污染或版本冲突，不重新展开 Docker 教学。

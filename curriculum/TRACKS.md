@@ -10,7 +10,7 @@ Fast Track 仍必须最终完成 TEST-01、DOC-01、JOB-01；但达到 Applicati
 
 ## Application Gate
 
-Gate 不是课程结束。它要求最小 Docker 环境可复现、A1 原理证据、A2 独立 controller baseline 与 6/7 DOF 全链路、最小 Action 经验、TaskNode v1、取消/超时/错误传播、核心故障案例、项目 README 和 `MINIMUM_RESUME_EVIDENCE.md`。详见 `APPLICATION_GATE.md`。
+Gate 不是课程结束。它要求完整、稳定的 Docker 机械臂开发环境可复现、A1 原理证据、A2 独立 controller baseline 与 6/7 DOF 全链路、最小 Action 经验、TaskNode v1、取消/超时/错误传播、核心故障案例、项目 README 和 `MINIMUM_RESUME_EVIDENCE.md`。详见 `APPLICATION_GATE.md`。
 
 ## Standard Track：基本独立工作
 

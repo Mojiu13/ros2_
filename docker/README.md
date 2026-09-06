@@ -1,7 +1,9 @@
-# Docker 环境目录（由 ENV-01 实作）
+# ros2-dev 开发环境
 
-本目录当前只声明边界，不预先生成未经本机验证的 Dockerfile/Compose。
+ENV-01 将一次建立完整、稳定、可重建的机械臂 ROS2 Jazzy image，而不是让 Dockerfile 随每个学习模块频繁演化。
 
-ENV-01 将根据当时官方 Jazzy/Gazebo/MoveIt/Docker 文档和本机 CPU、桌面会话、GPU 类型创建并验证：`Dockerfile`、`compose.yaml`、`entrypoint.sh`。
+预计包含 ROS2 Jazzy、RViz2、Gazebo Sim/ros_gz、ros2_control/ros2_controllers、Gazebo control integration、MoveIt2、colcon/rosdep/ament、C++/Python ROS 开发工具。实际包名和版本在 ENV-01 按当前官方文档验证。
 
-验收必须包括源码 bind mount、underlay/overlay、GUI、GPU renderer、ROS discovery、依赖回写和删除 container 后重建。Native Fallback 必须有实际限制、理由和差异记录。
+本目录最终维护 `Dockerfile`、`compose.yaml`、`entrypoint.sh` 和复现说明。默认一个 non-root `ros2-dev` container，宿主源码 bind mount，UID/GID 合理映射。
+
+ENV-01 后只有容器启动、权限、GUI、缺包、污染、版本冲突或项目特定依赖时才重新处理 Docker；正常模块直接启动环境并学习 ROS。

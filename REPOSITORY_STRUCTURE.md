@@ -49,6 +49,6 @@ ros2_/
 - `src/` 和所有 Git 文件必须位于宿主仓库；container 删除不影响源码。
 - build/install/log 可选择 bind mount、named volume 或可丢弃重建策略，但必须记录。
 - 默认一个主 ros2-dev container；ROS-01 可临时启动第二个做 discovery 实验，不做微服务拆分。
-- 依赖按阶段演化并回写 Dockerfile/Compose/entrypoint；不把手工改过的 container 当环境定义。
+- ENV-01 一次定义完整主线依赖；真实缺包或版本修复才回写 Dockerfile/Compose/entrypoint；不把手工改过的 container 当环境定义。
 - Container development user 与 Host UID/GID 合理映射，避免 root-owned 文件。
 - 每个 Project README 最终提供 clone→image→container→workspace build→launch 的复现链。

@@ -37,4 +37,4 @@ APP-01B 接入 MoveIt 与最小状态机；APP-02A 完成 cancel/timeout/error p
 
 ## 环境与求职证据
 
-Project A/B 使用同一个逐步演化的主 `ros2-dev` container，不强制拆成微服务。README 最终给出 clone→build image→start container→build workspace→launch。Application Gate 生成 `docs/MINIMUM_RESUME_EVIDENCE.md`；不得虚构真机、性能、工业落地、未实现 recovery 或未经测试的功能。
+Project A/B 使用 ENV-01 一次构建的同一个稳定主 `ros2-dev` container，不强制拆成微服务。README 最终给出 clone→build image→start container→build workspace→launch。Application Gate 生成 `docs/MINIMUM_RESUME_EVIDENCE.md`；不得虚构真机、性能、工业落地、未实现 recovery 或未经测试的功能。

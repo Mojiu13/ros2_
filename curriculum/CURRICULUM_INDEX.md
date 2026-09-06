@@ -4,7 +4,7 @@ Phase 架构保持不变。模块按依赖排序；Application Gate 是投递检
 
 | Module | 名称 | 阶段 | 优先级 | Prerequisites | 工作量 |
 |---|---|---|---:|---|---|
-| [ENV-01](modules/ENV-01.md) | Docker 化 ROS2 Jazzy 最小开发环境与可重建工作区 | Phase 0 | P0 | 基本 Linux 使用；C++ / Python 基础；不要求 ROS 或 Docker 深入知识 | M |
+| [ENV-01](modules/ENV-01.md) | 完整 Dockerized ROS2 Jazzy 机械臂开发环境与可重建工作区 | Phase 0 | P0 | 基本 Linux 使用；C++ / Python 基础；不要求 ROS 或 Docker 深入知识 | L |
 | [ROS-01](modules/ROS-01.md) | ROS 2 计算图、CLI、通信选择与容器网络 | Phase 0 | P0 | ENV-01 | M |
 | [ROS-02](modules/ROS-02.md) | Python 与 C++ ROS 包最小工程 | Phase 0 | P0 | ROS-01 | L |
 | [ROS-03](modules/ROS-03.md) | Launch、Parameter、YAML、Namespace 与 Remap | Phase 0 | P0 | ROS-02 | M |
@@ -34,7 +34,7 @@ Phase 架构保持不变。模块按依赖排序；Application Gate 是投递检
 
 ## 阶段门
 
-- Phase 0 Gate：最小 Dockerized ROS 环境以 non-root user 可删除、重建、恢复；双语言 topic/service/action 与配置可运行；ROS 容器网络实验通过。
+- Phase 0 Gate：完整 ros2-dev image 以 non-root user 可删除、重建、恢复；双语言 topic/service/action 与配置可运行；ROS 容器网络实验通过。
 - Phase 1 Gate：A1 完成原理闭环；A2 在 MoveIt 前已有独立 controller/direct trajectory baseline，随后完成规划、编程与集成。
 - Application Gate：APP-02A 与 DBG-01 核心案例后，具备最低可投递证据；详见 `APPLICATION_GATE.md`。
 - Phase 3 Gate：Project B 有可控失败、需求可追踪测试和工程文档。

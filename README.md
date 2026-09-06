@@ -7,9 +7,9 @@
 ## 环境原则
 
 - Host 负责 Docker Engine/Compose、Git、编辑器、桌面/GPU driver、硬件访问基础和源码持久化。
-- Container 从 ROS2 Jazzy 最小开发环境开始；Gazebo、ros2_control、MoveIt 等按模块 Just-In-Time 写入环境定义并逐步重建。
+- ENV-01 一次构建完整 `ros2-dev` image，包含 Jazzy、RViz、Gazebo、ros2_control、MoveIt 和开发工具；后续通常不再修改 Docker。
 - 项目源码通过 bind mount 持久化；删除 container 后必须能从 Dockerfile/Compose 重建。
-- ENV-01 只记录基本 GPU 信息；RViz GUI 在 SYS-01 按需配置，Gazebo GPU/renderer 在 SIM-01 正式验证。
+- ENV-01 完成基础 GUI/3D 可用性；具体 RViz、Gazebo、controller 和 MoveIt 知识仍在对应模块 Just-In-Time 学习。
 - 纯仿真默认 Docker；只有记录了实际限制与差异时才允许 Native Fallback。
 
 环境图见 [`curriculum/DOCKER_FIRST_ARCHITECTURE.md`](curriculum/DOCKER_FIRST_ARCHITECTURE.md)。

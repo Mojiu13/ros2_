@@ -12,19 +12,17 @@ ENV-01
 
 ## 环境要求
 
-默认使用 ENV-01 验收通过的 Dockerized ROS2 Jazzy 环境；不假定 Host 安装 ROS。
-
-如果本模块新增依赖，必须更新版本化环境定义、重建 image/container、验证并记录到 `docs/ENVIRONMENT_MANIFEST.md`。
+默认使用 ENV-01 已构建并验收的完整 `ros2-dev` image；不假定 Host 安装 ROS。正常情况下只启动主 development container、进入容器并确认本模块所需 package 可用，然后直接开始 ROS/机器人软件学习。只有实际缺包、版本冲突或新增项目特定依赖时才修改环境定义、重建并更新 `docs/ENVIRONMENT_MANIFEST.md`。
 
 ## 开始时检查
 
-先确认 Docker Engine、目标 image/container、宿主 source bind mount、ROS underlay、workspace overlay，以及 prerequisite 报告/项目证据。
+[HOST] 如主环境未运行，启动既有 Compose 项目。[CONTAINER] 确认 workspace/source mount、ROS underlay、workspace overlay和本模块 prerequisite evidence；检查本模块所需 package 可用。环境正常时不重新审计 Docker。
 
 读取 ENV-01 重建报告、Compose 网络配置与 ROS_DOMAIN_ID；确认 container 内基础节点可运行。
 
 ## 核心实践任务
 
-观察 node/topic/service/action；完成最小通信与接口选择。至少做一次 Container A↔Container B 或 Host↔ROS Container 的 discovery/topic 实验，对比 bridge 与 host networking 的实际现象；检查 localhost、container namespace、ROS_DOMAIN_ID 和相同/不同 domain 的影响。
+观察 node/topic/service/action；完成最小通信和接口选择。理解 container network namespace、localhost 边界、ROS_DOMAIN_ID 与 DDS discovery 会受网络影响；如有助于理解，可临时启动第二个 container 或 tool container 做一次最小发现演示，但不把多容器网络实验作为核心验收，也不深入 Docker networking。
 
 ## 最小理论
 
@@ -32,19 +30,19 @@ ENV-01
 
 ## 故障注入
 
-节点运行但彼此发现不了、ROS_DOMAIN_ID 不一致、只监听本地、错误把网络问题当节点代码问题。
+以 ROS graph/interface 错误为主要故障；网络部分只观察一个最小 discovery/ROS_DOMAIN_ID 现象，不展开 bridge/host network 故障矩阵。
 
 ## 输出文件 / Deliverables
 
-通信地图、接口选择表、容器网络实验表、discovery 排障记录。
+通信地图、接口选择表、CLI 观察记录；可选的最小 discovery 笔记。
 
 ## Exit Criteria
 
-能根据任务选择通信方式；能用证据区分节点、ROS graph 与 container network 问题；A/B 或 Host/container discovery 实验可重复。
+能选择 topic/service/action；能用 CLI 找到接口两端；知道 localhost、ROS_DOMAIN_ID 和容器网络可能影响 discovery，但无需完成深入多容器网络实验。
 
 除非证据、复述和模块面试全部完成，否则不得标记 Completed。
 
-如果为了本模块在 running container 中临时安装或修改依赖，但没有回写 Dockerfile/Compose/entrypoint 等版本化环境定义并重建验证，则模块不得 Completed。
+如果实际修改了运行环境，或为诊断在 running container 中临时安装了依赖，必须回写 Dockerfile/Compose/entrypoint、重建验证并更新 `docs/ENVIRONMENT_MANIFEST.md`；否则模块不得 Completed。
 
 ## 模块面试范围
 
@@ -52,4 +50,4 @@ topic/service/action 边界；localhost 在两个 container 中是否相同；RO
 
 ## 新对话上下文恢复
 
-读取 `README.md`、`LEARNING_STATUS.md`、`curriculum/CURRICULUM_INDEX.md`、当前 module、prerequisite reports、`curriculum/DOCKER_FIRST_ARCHITECTURE.md`、`docs/ENVIRONMENT_MANIFEST.md`，以及当前项目真实 README/evidence。不得依赖上一聊天记忆。
+读取 README、LEARNING_STATUS、CURRICULUM_INDEX、当前 module、prerequisite reports、Docker architecture、ENVIRONMENT_MANIFEST 和当前项目真实 README/evidence。ENV-01 完成后默认环境稳定；除非出现容器、权限、GUI、缺包、污染或版本冲突，不重新展开 Docker 教学。

@@ -4,7 +4,7 @@
 
 ## 技术证据
 
-- ENV-01：non-root/UID/GID 正确，Dockerized Jazzy 最小环境可删除重建，源码不丢失，最小节点再次成功。
+- ENV-01：non-root/UID/GID 正确，完整 Dockerized Jazzy 机械臂开发环境可删除重建，源码不丢失，最小节点再次成功。
 - ROS-01~03：计算图、容器 discovery、C++/Python、custom interface、最小 Action、launch/config 均有证据。
 - A1：2–3 DOF MiniArm 完成建模、Gazebo、ros2_control、direct trajectory 原理学习。
 - A2：CTRL-02 Stage B 已证明成熟 6/7 DOF 的 Gazebo/simulated hardware→ros2_control→JTC→FJT→motion；MOVEIT/编程/INT 全链路完成。
