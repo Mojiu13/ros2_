@@ -8,6 +8,7 @@ Gate 只判断能否证明已走通一个可信 ROS2 机械臂应用项目，不
 
 ## 必须证据
 
+- 17 个 Gate 前 CORE 均满足 practice + real evidence + module report + interview；报告位于 `docs/modules/<MODULE_ID>/MODULE_REPORT.md`。
 - ENV-01：完整 ros2-dev 可重建，源码持久化、non-root 权限正常。
 - ROS-01~03：能观察 graph，C++/Python/custom interface、topic/service/action、launch/YAML/parameter/remap 有运行证据。
 - Project A1：MiniArm 的 URDF/TF/RViz、Gazebo、ros2_control 和 direct trajectory。
@@ -20,7 +21,7 @@ Gate 只判断能否证明已走通一个可信 ROS2 机械臂应用项目，不
 
 ## 明确不要求
 
-DLC、完整测试工程、完整文档体系、QoS/Lifecycle、advanced controller、retry/recovery、deep Docker、advanced robotics math、大型面试题库。
+DLC（但不包括 CORE Required Supporting Knowledge）、完整测试工程、完整文档体系、QoS/Lifecycle、advanced controller、retry/recovery、deep Docker、advanced robotics math、大型面试题库。
 
 ## Gate 后
 

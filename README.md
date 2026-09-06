@@ -1,13 +1,14 @@
 # ROS2 机械臂应用开发｜CORE + DLC 学习仓库
 
-唯一目标：让具备 C++/Python 基础、ROS/机器人接近零基础的学习者，尽快达到第一份 ROS2 机械臂应用开发岗位的可项目、可排错、可面试水平。
+唯一目标：让具备 C++ / Python 基础、ROS / 机器人接近零基础的学习者，尽快达到第一份 ROS2 机械臂应用开发岗位的可项目、可排错、可面试水平。现在只设计并维护课程体系；具体教学从 `ENV-01` 另行开始。
 
-## 两个系统
+## 三层知识结构
 
-- **CORE**：不学就会阻止完整机械臂项目继续推进的最短主线。
-- **DLC**：计划外扩展包；不影响 CORE completion、Application Gate 或开始投递。
+1. **CORE Skill**：ROS2 与机械臂应用开发主技能。
+2. **CORE Supporting Knowledge**：完成实践、排错、理解后续模块和应对第一份岗位常见面试所必需的辅助知识。
+3. **DLC**：完全跳过也不会阻塞 CORE 的深化内容。
 
-不再使用 P0/P1/P2/Advanced 作为学习主树，也不存在“Standard Track 没完成所以不能投”的逻辑。
+因此不是“ROS = CORE、其他 = DLC”。例如 CMake 基础、quaternion 用法、controller lifecycle 和 expected/actual test case 都属于 CORE Supporting Knowledge；高级 CMake、quaternion 代数、controller 实时内部和完整测试架构才属于 DLC。
 
 ## CORE 成功链
 
@@ -30,25 +31,38 @@
 → 立即投递
 ~~~
 
+CORE 顺序与 18 个 Module 均已冻结；17 个 Gate 前模块 + 1 个投递后模块。DLC 不参与 CORE completion、Application Gate 或开始投递。
+
 ## Anti-Rabbit-Hole Rule
 
-遇到辅助知识时：
+遇到看似辅助的主题时，依次判断：
 
-1. 只解释继续当前实践所需的最小知识。
-2. 值得深入则标记 `DLC_REF: <DLC_ID>`。
-3. 立即返回当前 CORE。
+1. 不理解它是否会导致复制粘贴、无法排错、阻塞未来 1–2 个模块、遗漏第一份岗位高频问题，或破坏系统链路理解？任一为“是”，它就是 CORE Supporting Knowledge。
+2. 在当前实践中讲到 **Minimum Sufficient Depth**，并通过观察、修改或故障证据确认理解。
+3. 只有完全跳过也不阻塞 CORE 的更深内容，才记录 `DLC_REF: <DLC_ID>` 并返回主线。
 
-除非辅助主题确实阻塞主线，或学习者明确说“进入 DLC-XXX”，否则不得展开 DLC。CORE 中至少 80–90% 注意力用于当前 ROS/机械臂任务，辅助知识最多 10–20%。
+实践占主导是方向，不是 80–90%/10–20% 的死配额。必要支撑知识不得为了满足比例被强行省略。
+
+## CORE 完成闭环
+
+每个 CORE 只有在以下四项都完成后才能标记 `Completed`：
+
+~~~text
+practice + real evidence + docs/modules/<MODULE_ID>/MODULE_REPORT.md + interview
+~~~
+
+同时更新 `LEARNING_STATUS.md`，并形成一次范围合理的 Git commit。报告模板见 `docs/templates/MODULE_REPORT.md`。
 
 ## 入口
 
-- [`core/CORE_INDEX.md`](core/CORE_INDEX.md)：最短主线与 CORE AFTER APPLY。
-- [`core/APPLICATION_GATE.md`](core/APPLICATION_GATE.md)：最低可投递证据。
-- [`dlc/DLC_INDEX.md`](dlc/DLC_INDEX.md)：按 Trigger 选择的扩展包。
-- [`migration/MIGRATION_TABLE.md`](migration/MIGRATION_TABLE.md)：旧模块/知识点的新归宿。
-- [`prompts/CORE_TEACHING_PROMPT_TEMPLATE.md`](prompts/CORE_TEACHING_PROMPT_TEMPLATE.md)：新聊天启动 CORE。
-- [`prompts/DLC_TEACHING_PROMPT_TEMPLATE.md`](prompts/DLC_TEACHING_PROMPT_TEMPLATE.md)：明确进入 DLC 时使用。
+- [CORE 索引](core/CORE_INDEX.md)
+- [Embedded Skills](core/EMBEDDED_SKILLS.md)
+- [Application Gate](core/APPLICATION_GATE.md)
+- [DLC 索引](dlc/DLC_INDEX.md)
+- [CORE 教学提示词](prompts/CORE_TEACHING_PROMPT_TEMPLATE.md)
+- [Teaching Protocol](prompts/TEACHING_PROTOCOL.md)
+- [迁移表](migration/MIGRATION_TABLE.md)
 
-Docker、Linux、Git、CMake、网络、GPU、测试理论和文档理论不得抢走主线。Docker 在 ENV-01 一次搭建完整环境；Linux/Git/CMake 作为 Embedded Skills 随任务学习。
+Docker 在 ENV-01 一次建立稳定基础设施；Linux、Git、CMake/ament、YAML、CLI/日志和基础排错作为 Required Supporting Knowledge 随任务掌握。高级工具和内部机制仍留在 DLC。
 
 范围外：强化学习、Isaac Lab、灵巧手、视觉伺服、触觉、CUDA/TensorRT、具身智能和高级控制算法。除非目标岗位改变，不进入 CORE。

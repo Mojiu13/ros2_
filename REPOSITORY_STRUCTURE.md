@@ -30,7 +30,8 @@ ros2_/
 ├── docs/
 │   ├── ENVIRONMENT_MANIFEST.md
 │   ├── MINIMUM_RESUME_EVIDENCE.md
-│   ├── modules/<CORE_ID>/
+│   ├── modules/README.md
+│   ├── modules/<CORE_ID>/MODULE_REPORT.md
 │   └── templates/
 ├── projects/
 │   ├── PROJECTS.md
@@ -39,4 +40,4 @@ ros2_/
 └── src/                    # 正式学习中产生的 ROS packages
 ~~~
 
-当前只创建课程、索引和模板；运行证据与代码必须在学习时真实产生，不预造。
+当前只创建课程、索引、报告规则和模板；运行证据、模块报告与代码必须在学习时真实产生，不预造。每个报告固定保存到 `docs/modules/<CORE_ID>/MODULE_REPORT.md`。

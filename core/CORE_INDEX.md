@@ -1,6 +1,13 @@
 # CORE INDEX
 
-判断标准：如果现在不学它，是否会阻止完整 ROS2 机械臂项目继续推进？CORE 只保留答案为“会”的内容。
+判断标准不再只是“它是不是 ROS 主技能”，而是：
+
+- 是否完成当前模块和验收所必需；
+- 是否用于解释现象、排错或理解完整链路；
+- 是否会在未来 1–2 个模块复用；
+- 是否是第一份 ROS2 机械臂岗位的常见基础。
+
+满足任一且不可安全跳过的内容，作为 **CORE Supporting Knowledge** 教到 Minimum Sufficient Depth。只有完全跳过也不阻塞主线的深化内容才进入 DLC。
 
 ## CORE TO APPLY
 
@@ -24,7 +31,7 @@
 | 16 | [DBG-01](modules/DBG-01.md) | 五类高频故障核心包 | APP-02A | M |
 | 17 | [DELIVERY-01](modules/DELIVERY-01.md) | 最低测试、文档与项目交付 | DBG-01 | L |
 
-完成 `DELIVERY-01` 并通过 [`APPLICATION_GATE.md`](APPLICATION_GATE.md) 后立即开始投递。
+完成 `DELIVERY-01` 并通过 [APPLICATION_GATE](APPLICATION_GATE.md) 后立即开始投递。顺序没有变化，DLC 不是 prerequisite。
 
 ## CORE AFTER APPLY
 
@@ -33,3 +40,7 @@
 | [JOB-01](modules/JOB-01.md) | 投递期项目表达与面试闭环 | DELIVERY-01；Application Gate 已通过并已开始投递 | M |
 
 投递期间继续 JOB-01，并按真实反馈选择 DLC；不得因为 DLC 未完成而延迟投递。
+
+## 每模块完成定义
+
+`practice + real evidence + report + interview` 缺一不可。报告固定落到 `docs/modules/<MODULE_ID>/MODULE_REPORT.md`，随后更新 `LEARNING_STATUS.md` 并形成一次合理 commit。

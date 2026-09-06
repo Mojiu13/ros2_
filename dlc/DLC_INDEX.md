@@ -1,5 +1,7 @@
 # DLC INDEX
 
+DLC 只保存完全跳过也不会阻塞当前主线的深化知识；Required Supporting Knowledge 不属于 DLC。基础 CMake、quaternion 使用、controller lifecycle、test case expected/actual 等在对应 CORE 内完成，DLC 只承接高级 CMake、quaternion 代数、实时内部与完整测试架构。
+
 进入方式：明确说“我要学习 DLC：<DLC_ID>”，并使用 `prompts/DLC_TEACHING_PROMPT_TEMPLATE.md`。
 
 ## DLC-A｜高价值扩展
