@@ -1,40 +1,21 @@
-# 两个持续演化的求职项目
+# CORE 求职项目
 
 ## Project A｜Manipulator Simulation & Integration
 
-### A1｜MiniArm Learning Model
+### A1 MiniArm Learning Model
 
-使用 2–3 DOF 自建机械臂，从零完成 URDF/Xacro/TF/RViz、collision/inertial、Gazebo、ros2_control 和 direct trajectory。A1 用于理解原理，不作为最终工业复杂度证明。
+MODEL-01 → SIM-01 → CTRL-01 → CTRL-02 Stage A。2–3 DOF 自建模型用于理解 URDF/TF/Gazebo/ros2_control/FJT 原理。
 
-### A2｜Full Manipulator Integration
+### A2 Full Manipulator Integration
 
-实际型号在 SYS-01 根据 ROS2 Jazzy、Gazebo Sim、ros2_control、MoveIt 与 Docker 当前支持状态选择，可优先评估维护良好的 UR/Panda 类模型，但不提前固定。
+SYS-01 选择成熟 6/7 DOF → CTRL-02 Stage B 独立 controller baseline → MOVEIT-01 → MOVEIT-02 → INT-01。最终求职集成证据主要来自 A2，不要求从零手搓复杂工业模型。
 
-~~~text
-SYS-01
-参考 6/7 DOF 基线观察与型号/版本记录
-    ↓
-CTRL-02 Stage B
-A2 Gazebo/simulated hardware + ros2_control + direct trajectory baseline
-    ↓
-MOVEIT-01
-A2 SRDF / kinematics / MoveIt config / RViz plan-execute
-    ↓
-MOVEIT-02
-A2 C++/Python planning and execution
-    ↓
-INT-01
-A2 Dockerized full integration
-~~~
+## Project B｜TaskNode Application
 
-成熟模型若已有 controller/config，重点是读懂、验证、修改、故障注入与排查，不重复发明。最终 Project A 求职证据主要来自 A2。
+APP-01A 小规模需求/接口 → APP-01B TaskNode/状态机 → APP-02A cancel/timeout/error → DBG-01 高频故障 → DELIVERY-01 最低测试/文档。
 
-## Project B｜Task Execution & Recovery
+CORE 明确停止在“可靠成功或明确失败”。Retry/replan/recovery 属于 `DLC-APP-RECOVERY`。
 
-APP-01A 在编码前创建 REQUIREMENTS、INTERFACE_DESIGN、Task.action、C++ server skeleton 和 Python client；此时 ROS-02 已提供最小 Action 编程经验。
+## 最低交付
 
-APP-01B 接入 MoveIt 与最小状态机；APP-02A 完成 cancel/timeout/error propagation；APP-02B 在 P1 增加有限 retry/replan。TEST-01 建立 Requirement→Test Case，DOC-01 只整理真实需求与证据。
-
-## 环境与求职证据
-
-Project A/B 使用 ENV-01 一次构建的同一个稳定主 `ros2-dev` container，不强制拆成微服务。README 最终给出 clone→build image→start container→build workspace→launch。Application Gate 生成 `docs/MINIMUM_RESUME_EVIDENCE.md`；不得虚构真机、性能、工业落地、未实现 recovery 或未经测试的功能。
+两个项目均需真实 README、架构/执行图、运行证据、已知限制和简历 bullet。复杂调参、真机、完整自动化测试或大规模文档均非 Gate 前提。

@@ -1,41 +1,54 @@
-# ROS2 机械臂软件工程师求职课程
+# ROS2 机械臂应用开发｜CORE + DLC 学习仓库
 
-面向第一份 ROS2 机械臂应用开发 / 软件工程岗位。默认技术环境为 **Ubuntu 24.04 Host + Docker + ROS2 Jazzy Container**，主线保持 C++/Python、RViz2、URDF/Xacro、Gazebo Sim、ros2_control 与 MoveIt 2。
+唯一目标：让具备 C++/Python 基础、ROS/机器人接近零基础的学习者，尽快达到第一份 ROS2 机械臂应用开发岗位的可项目、可排错、可面试水平。
 
-课程架构已经正式冻结：本次只对既有 Phase / Module 做 Docker-first、项目复杂度、机器人基础、APP 粒度和求职 Gate 的局部修订，未扩大岗位范围。
+## 两个系统
 
-## 环境原则
+- **CORE**：不学就会阻止完整机械臂项目继续推进的最短主线。
+- **DLC**：计划外扩展包；不影响 CORE completion、Application Gate 或开始投递。
 
-- Host 负责 Docker Engine/Compose、Git、编辑器、桌面/GPU driver、硬件访问基础和源码持久化。
-- ENV-01 一次构建完整 `ros2-dev` image，包含 Jazzy、RViz、Gazebo、ros2_control、MoveIt 和开发工具；后续通常不再修改 Docker。
-- 项目源码通过 bind mount 持久化；删除 container 后必须能从 Dockerfile/Compose 重建。
-- ENV-01 完成基础 GUI/3D 可用性；具体 RViz、Gazebo、controller 和 MoveIt 知识仍在对应模块 Just-In-Time 学习。
-- 纯仿真默认 Docker；只有记录了实际限制与差异时才允许 Native Fallback。
+不再使用 P0/P1/P2/Advanced 作为学习主树，也不存在“Standard Track 没完成所以不能投”的逻辑。
 
-环境图见 [`curriculum/DOCKER_FIRST_ARCHITECTURE.md`](curriculum/DOCKER_FIRST_ARCHITECTURE.md)。
+## CORE 成功链
 
-## 保持不变的课程原则
+~~~text
+完整开发环境
+→ ROS2 graph / communication / programming
+→ Launch / YAML / Parameter
+→ 参观完整 6/7 DOF 系统
+→ MiniArm URDF / TF / RViz
+→ Gazebo
+→ ros2_control
+→ Direct FollowJointTrajectory + A2 controller baseline
+→ MoveIt2 RViz + programming
+→ 6/7 DOF integration
+→ TaskNode
+→ Cancel / Timeout / Error
+→ 五类高频故障
+→ 最低测试与文档交付
+→ Application Gate
+→ 立即投递
+~~~
 
-- 运行 → 观察 → 修改 → 再运行 → 单一故障注入 → 分层定位 → 修复 → 回归 → 总结 → 复述 → 模块面试。
-- 先建立完整链路，理论 Just-In-Time；不混用 ROS 1、Gazebo Classic 或旧发行版做法。
-- C++ 在 Phase 0 进入，Python 同步保留。
-- 源码、自定义 controller 和深入运动学继续是 P2；高级机器人/AI 方向仍为 P3。
+## Anti-Rabbit-Hole Rule
 
-## Project A 的两级复杂度
+遇到辅助知识时：
 
-- A1 MiniArm Learning Model：2–3 DOF，只用于真正理解 URDF/Xacro/TF/RViz/Gazebo/ros2_control。
-- A2 Full Manipulator Integration：使用教学时确认仍获 Jazzy 良好支持的成熟 6/7 DOF 机械臂；最终求职证据主要来自 A2。
+1. 只解释继续当前实践所需的最小知识。
+2. 值得深入则标记 `DLC_REF: <DLC_ID>`。
+3. 立即返回当前 CORE。
 
-## 路线与投递
+除非辅助主题确实阻塞主线，或学习者明确说“进入 DLC-XXX”，否则不得展开 DLC。CORE 中至少 80–90% 注意力用于当前 ROS/机械臂任务，辅助知识最多 10–20%。
 
-- 完整模块顺序：[`curriculum/CURRICULUM_INDEX.md`](curriculum/CURRICULUM_INDEX.md)
-- Fast / Standard：[`curriculum/TRACKS.md`](curriculum/TRACKS.md)
-- 最低可投递 Gate：[`curriculum/APPLICATION_GATE.md`](curriculum/APPLICATION_GATE.md)
-- 岗位映射：[`curriculum/ROLE_COMPETENCY_MATRIX.md`](curriculum/ROLE_COMPETENCY_MATRIX.md)
-- 项目边界：[`projects/PROJECTS.md`](projects/PROJECTS.md)
+## 入口
 
-达到 Application Gate 并生成最低简历证据后开始投递，随后继续 TEST-01 → DOC-01 → JOB-01 → P1；不需要等全部课程学完。
+- [`core/CORE_INDEX.md`](core/CORE_INDEX.md)：最短主线与 CORE AFTER APPLY。
+- [`core/APPLICATION_GATE.md`](core/APPLICATION_GATE.md)：最低可投递证据。
+- [`dlc/DLC_INDEX.md`](dlc/DLC_INDEX.md)：按 Trigger 选择的扩展包。
+- [`migration/MIGRATION_TABLE.md`](migration/MIGRATION_TABLE.md)：旧模块/知识点的新归宿。
+- [`prompts/CORE_TEACHING_PROMPT_TEMPLATE.md`](prompts/CORE_TEACHING_PROMPT_TEMPLATE.md)：新聊天启动 CORE。
+- [`prompts/DLC_TEACHING_PROMPT_TEMPLATE.md`](prompts/DLC_TEACHING_PROMPT_TEMPLATE.md)：明确进入 DLC 时使用。
 
-## 开始模块
+Docker、Linux、Git、CMake、网络、GPU、测试理论和文档理论不得抢走主线。Docker 在 ENV-01 一次搭建完整环境；Linux/Git/CMake 作为 Embedded Skills 随任务学习。
 
-在新对话中复制 [`prompts/MODULE_TEACHING_PROMPT_TEMPLATE.md`](prompts/MODULE_TEACHING_PROMPT_TEMPLATE.md)，替换 `<MODULE_ID>`。新版状态见 [`LEARNING_STATUS.md`](LEARNING_STATUS.md)。
+范围外：强化学习、Isaac Lab、灵巧手、视觉伺服、触觉、CUDA/TensorRT、具身智能和高级控制算法。除非目标岗位改变，不进入 CORE。

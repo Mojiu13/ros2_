@@ -1,15 +1,13 @@
-# <MODULE_ID> 模块报告
+# <MODULE_ID> REPORT
 
 状态：In Progress
 
-## 目标与边界
-## 环境与版本证据
-## 完成的实践
-## 关键观察与日志
-## 修改实验及前后对照
-## 故障注入：现象→观察→层级→假设→验证→根因→修复→回归
-## 产物链接
-## Exit Criteria 自检
-## 无提示复述摘要
-## 模块面试结果
-## 遗留问题与下一模块输入
+## Goal / Boundary
+## Environment evidence
+## Practice and observations
+## Single fault: symptom→evidence→layer→root cause→fix→regression
+## Deliverables
+## Exit Criteria
+## CORE summary
+## DLC_REF backlog（不等于欠债）
+## Interview result

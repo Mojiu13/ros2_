@@ -1,16 +1,12 @@
-# 错误条目
+# ERROR LOG ENTRY
 
-日期：
-模块：
-严重度：
-故障层：
-
-## 正常基线
-## 故障注入/触发条件
-## 现象与原始日志
-## 已观察证据
-## 单一假设与验证
-## 根因
-## 修复
-## 回归结果
-## 预防措施
+Module：
+Layer：
+Baseline：
+Symptom：
+Evidence：
+Single hypothesis：
+Root cause：
+Fix：
+Regression：
+DLC_REF（如需）：
