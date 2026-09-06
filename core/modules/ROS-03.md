@@ -18,18 +18,19 @@ ROS-02
 
 - node name、topic name、namespace，以及 relative/absolute name 的最低直觉。
 - remap 改变连接名称；parameter 配置节点行为；YAML 是配置载体；launch 负责启动和组合系统。
-- launch/config 文件需要被正确安装，修改后需重建并 source 对应 overlay。
+- launch directory install 与 config directory install：在首次创建这些目录时理解 `install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})` 和 `install(DIRECTORY config DESTINATION share/${PROJECT_NAME})`。
+- ROS 从 install space 查找已安装的 launch/config；修改后必须重新构建并 source 正确 overlay，才能验证新文件。
 - 用 CLI 验证最终名称与参数值，不能以“文件写了”代替生效证据。
 
 这些内容属于 CORE Supporting Knowledge：首次出现时必须解释、实践并检查理解，不能因为它们不是 ROS/机器人主技能就跳到 DLC。
 
 ## Core Practice
 
-用 launch 启动多个节点；从 YAML 加载参数；修改 namespace/remap；用 CLI 证明最终节点、接口和参数；修复一次配置错误。
+用 launch 启动多个节点；从 YAML 加载参数；为 launch/config 添加真实的 directory install rules；重新构建并 source overlay；修改 namespace/remap；用 CLI 证明最终节点、接口和参数；修复一次配置错误。
 
 ## Minimum Theory
 
-讲到能预测并验证最终 node/topic/parameter 名称；不推演名称解析内部规则。
+讲到能预测并验证最终 node/topic/parameter 名称，并理解 launch/config 为何必须安装到 install space；不推演名称解析内部规则或提前扩展高级 CMake。
 
 ## Fault / Debug
 
@@ -69,7 +70,7 @@ DLC 只保存不影响当前 CORE 继续的深化内容。Required Supporting Kn
 
 ## Interview Scope
 
-参数加载、namespace/remap、launch 成功但行为错误的排查。；并检查 Required Supporting Knowledge 是否能用于解释现象和排错。不得追问本模块列出的 DLC 内部原理。
+参数加载、namespace/remap、launch 成功但行为错误的排查；并检查 Required Supporting Knowledge 是否能用于解释现象和排错。不得追问本模块列出的 DLC 内部原理。
 
 ## New Chat Resume
 

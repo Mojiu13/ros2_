@@ -71,7 +71,7 @@ DLC 只保存不影响当前 CORE 继续的深化内容。Required Supporting Kn
 
 ## Interview Scope
 
-URDF/TF、DOF、joint/task space、pose、FK 直觉。；并检查 Required Supporting Knowledge 是否能用于解释现象和排错。不得追问本模块列出的 DLC 内部原理。
+URDF/TF、DOF、joint/task space、pose、FK 直觉；并检查 Required Supporting Knowledge 是否能用于解释现象和排错。不得追问本模块列出的 DLC 内部原理。
 
 ## New Chat Resume
 

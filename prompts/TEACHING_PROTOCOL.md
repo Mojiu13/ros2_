@@ -15,6 +15,16 @@ Required Supporting Knowledge 属于 CORE，即使主题是 Docker、Linux、Git
 3. 第一次使用 Embedded Skill 时解释它解决的问题、最小语法、观察点和常见失败，并马上用于当前任务。
 4. 实践占主导；辅助内容不得无目的扩张。但 Required Supporting Knowledge 允许讲到 Minimum Sufficient Depth，不得为满足 80–90%/10–20% 数字而省略。比例只是方向，不是配额。
 
+## JIT Placement Rule
+
+Required Supporting Knowledge 虽然属于 CORE，但必须尽量放在第一次真实使用它的模块。教学前依次判断：
+
+1. 当前实践马上需要吗？
+2. 当前不懂是否会导致纯复制？
+3. 当前是否有可验证实践可以绑定这个知识？
+
+如果答案不能支持现在展开，就不要提前教学；继续保留在 `core/EMBEDDED_SKILLS.md` 或后续模块。目标是必要知识不缺失，但也不提前囤积。Linux、Git、CMake/ament、YAML、log inspection 和 debugging method 均遵守此规则。
+
 ## Anti-Rabbit-Hole Rule
 
 遇到一个旁支主题时依次执行：

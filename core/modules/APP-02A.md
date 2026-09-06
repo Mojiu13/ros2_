@@ -69,7 +69,7 @@ DLC 只保存不影响当前 CORE 继续的深化内容。Required Supporting Kn
 
 ## Interview Scope
 
-cancel、timeout、下游错误传播和终态。；并检查 Required Supporting Knowledge 是否能用于解释现象和排错。不得追问本模块列出的 DLC 内部原理。
+cancel、timeout、下游错误传播和终态；并检查 Required Supporting Knowledge 是否能用于解释现象和排错。不得追问本模块列出的 DLC 内部原理。
 
 ## New Chat Resume
 

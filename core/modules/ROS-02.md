@@ -17,8 +17,10 @@ ROS-01
 ## Required Supporting Knowledge
 
 - `package.xml` 与 `CMakeLists.txt`/Python package metadata 的职责边界。
-- 当前代码实际使用的 `find_package`、`add_executable`、依赖声明、`ament_target_dependencies`、install rules，以及 launch/config 安装规则。
-- `rosidl` 接口生成链：定义文件、生成、依赖、构建、source、消费接口。
+- 当前代码实际使用的 `find_package`、`add_executable`、dependency declaration 与 `ament_target_dependencies`。
+- executable install：通过当前真实 target 理解 `install(TARGETS ...)`，以及可执行文件为何需要进入 install space。
+- `rosidl` interface generation：定义文件、生成、依赖与消费接口。
+- build → source overlay → run：理解重新构建后为何必须加载正确 overlay，再验证节点和接口。
 - Action 最低事件流：goal → accept/reject → execute → feedback → result，并理解 goal handle 与 cancel。
 - 若当前实现涉及 callback、线程或 executor，只解释为何当前代码这样组织；不展开内部调度架构。
 - 构建/运行前后使用 Git `status`/`diff`，完成模块后形成一次合理 commit。
@@ -71,7 +73,7 @@ DLC 只保存不影响当前 CORE 继续的深化内容。Required Supporting Kn
 
 ## Interview Scope
 
-跨语言通信、接口生成、Action 生命周期、CMake/ament 最小职责。；并检查 Required Supporting Knowledge 是否能用于解释现象和排错。不得追问本模块列出的 DLC 内部原理。
+跨语言通信、接口生成、Action 生命周期、CMake/ament 最小职责；并检查 Required Supporting Knowledge 是否能用于解释现象和排错。不得追问本模块列出的 DLC 内部原理。
 
 ## New Chat Resume
 

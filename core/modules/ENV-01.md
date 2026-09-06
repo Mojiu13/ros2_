@@ -20,10 +20,15 @@ Ubuntu 24.04 Host + Docker Engine / Compose + Git/editor。起点不要求已有
 - Dockerfile、Compose、bind mount、workspace 和源码持久化各自解决什么问题。
 - non-root、UID/GID、`ls -l`、`chmod`、`chown` 与宿主/容器文件 ownership 的最低关系。
 - ROS underlay/overlay、`source`、重新构建后为何必须加载正确环境。
-- `pwd`、`ls`、`cd`、`mkdir`、`cp`、`mv`、`rm`、`cat`、`less`、`head`、`tail`、`grep`、`find`、`env`、`export`、`which`、`echo`、`apt` 的任务内基本用法。
-- Git 基础：`status`、`diff`、`add`、`commit`、`log`、`branch`、`switch`、`restore`、`.gitignore`；本模块完成时形成一次合理 commit。
+- 本模块实际需要的路径与文件观察：`pwd`、`ls`、`cd`、`mkdir`、`ls -l`。
+- 本模块实际需要的环境与命令定位：`env`、`export`、`which`。
+- 本模块实际需要的权限与安装：`chmod`、`chown`、`apt`。
+- `cat`、`grep`、`find` 仅在检查当前环境文件、定位配置或验证安装时真实用到才教学和验收。
+- 本模块需要的 Git 基础：`status`、`diff`、`add`、`commit`、`.gitignore`；完成时形成一次合理 commit。
 
-这些内容属于 CORE Supporting Knowledge：首次出现时必须解释、实践并检查理解，不能因为它们不是 ROS/机器人主技能就跳到 DLC。
+这些内容属于当前 ENV-01 的 CORE Supporting Knowledge：真实使用时必须解释、实践并检查理解，不能因为它们不是 ROS/机器人主技能就跳到 DLC。
+
+`core/EMBEDDED_SKILLS.md` 中未在本模块真实使用的 Must Learn Along CORE 内容，不作为 ENV-01 Exit Criteria；它们在后续 CORE 首次需要时 Just-In-Time 教学。
 
 ## Core Practice
 
@@ -71,7 +76,7 @@ DLC 只保存不影响当前 CORE 继续的深化内容。Required Supporting Kn
 
 ## Interview Scope
 
-Host/container 边界、UID/GID、持久化与可重建性。；并检查 Required Supporting Knowledge 是否能用于解释现象和排错。不得追问本模块列出的 DLC 内部原理。
+Host/container 边界、UID/GID、持久化与可重建性；并检查 Required Supporting Knowledge 是否能用于解释现象和排错。不得追问本模块列出的 DLC 内部原理。
 
 ## New Chat Resume
 

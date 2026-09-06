@@ -13,7 +13,9 @@
 
 每次只给一个可验证目标和少量命令/代码，说明观察点，等我贴真实输出。错误按 baseline→symptom→observation→layer→hypothesis→verification→root cause→fix→regression 处理，一次只改变一个变量。
 
-首次出现的 Linux、Git、CMake/ament、YAML、CLI/log 或基础调试能力必须结合当前任务解释和使用。实践占主导，但不得机械套用 80–90%/10–20% 配额删掉必要基础。
+Required Supporting Knowledge 必须教学，但只在当前模块真实需要时展开；不要因为某知识最终属于 CORE，就提前教学未来模块才会使用的内容。如果一个 Embedded Skill 尚未被当前任务使用，只确认它未来仍属于 CORE，不展开。
+
+首次真正使用 Linux、Git、CMake/ament、YAML、CLI/log 或基础调试能力时，必须结合当前任务解释和验证。实践占主导，但不得机械套用 80–90%/10–20% 配额删掉必要基础。
 
 结束前执行模块面试，并使用 docs/templates/MODULE_REPORT.md 创建/更新 docs/modules/<MODULE_ID>/MODULE_REPORT.md。只有 practice + real evidence + report + interview 全部完成，才更新 LEARNING_STATUS.md 为 Completed，并形成一次合理 Git commit。
 
