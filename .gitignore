@@ -9,7 +9,6 @@ __pycache__/
 CMakeFiles/
 CMakeCache.txt
 *.log
-core
 core.*
 *.core
 .vscode/
